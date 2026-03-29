@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Fredrick Mwaluko | CEO & Fleet Engineering Specialist | PrimeFleet Solutions</title>
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TCW4E5CVM9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TCW4E5CVM9');
+  </script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #ffffff;
+      color: #1A2C3E;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background-color: #0a0f1a;
+      color: #e0e0e0;
+    }
+    body.dark-mode .navbar,
+    body.dark-mode .exp-card,
+    body.dark-mode .cert-card,
+    body.dark-mode .case-card,
+    body.dark-mode .stats-row,
+    body.dark-mode .contact-form-container,
+    body.dark-mode .thought-card {
+      background: #1a1f2e;
+      border-color: #2a2f3e;
+      color: #e0e0e0;
+    }
+    body.dark-mode .section-title { color: #ffffff; }
+    body.dark-mode .stat-label { color: #a0a0b0; }
+    body.dark-mode .exp-title,
+    body.dark-mode .case-card h3,
+    body.dark-mode .cert-card h4 { color: #ffffff; }
+    body.dark-mode .exp-date { background: #2a2f3e; color: #a0a0b0; }
+    body.dark-mode .btn-outline-light { border-color: white; color: white; }
+    body.dark-mode .btn-outline-light:hover { background: white; color: #0A2540; }
+    
+    h1, h2, h3, h4, .logo-text, .nav-links a, .btn { font-family: 'Montserrat', sans-serif; font-weight: 700; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+    :root {
+      --deep-blue: #0A2540;
+      --deep-blue-dark: #051e30;
+      --orange: #E85D04;
+      --orange-hover: #d35400;
+      --gray-light: #F7F9FC;
+      --gray-border: #E9EDF2;
+      --slate: #4A5B6E;
+    }
+    body.dark-mode { --gray-light: #131725; --gray-border: #2a2f3e; --slate: #a0a0b0; }
+
+    /* Navbar */
+    .navbar { position: sticky; top: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(8px); box-shadow: 0 2px 20px rgba(0,0,0,0.03); z-index: 1000; padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.05); transition: background 0.3s; }
+    body.dark-mode .navbar { background: rgba(26,31,46,0.98); border-bottom-color: #2a2f3e; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo img { width: 42px; height: 42px; object-fit: contain; }
+    .logo-text { font-size: 1.5rem; font-weight: 800; color: var(--deep-blue); }
+    body.dark-mode .logo-text { color: white; }
+    .logo-text span { color: var(--orange); }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a { text-decoration: none; font-weight: 600; color: var(--deep-blue); transition: 0.2s; font-size: 0.95rem; }
+    body.dark-mode .nav-links a { color: #e0e0e0; }
+    .nav-links a:hover { color: var(--orange); }
+    
+    .dark-toggle { background: none; border: none; cursor: pointer; font-size: 1.2rem; color: var(--deep-blue); padding: 8px; border-radius: 50%; transition: 0.2s; margin-right: 16px; }
+    body.dark-mode .dark-toggle { color: var(--orange); }
+    
+    .btn-primary { background: var(--orange); color: white; border: none; padding: 12px 28px; border-radius: 40px; font-weight: 700; cursor: pointer; transition: all 0.25s ease; display: inline-block; text-decoration: none; }
+    .btn-primary:hover { background: var(--orange-hover); transform: translateY(-2px); }
+    .btn-outline { background: transparent; border: 2px solid var(--orange); color: var(--orange); padding: 12px 28px; border-radius: 40px; font-weight: 700; transition: 0.2s; text-decoration: none; display: inline-block; }
+    .btn-outline:hover { background: var(--orange); color: white; }
+    .btn-outline-light { background: transparent; border: 2px solid white; color: white; padding: 12px 28px; border-radius: 40px; font-weight: 700; transition: 0.2s; text-decoration: none; display: inline-block; }
+    .btn-outline-light:hover { background: white; color: var(--deep-blue); }
+
+    /* Hero Section */
+    .ceo-hero {
+      background: linear-gradient(135deg, #0A2540 0%, #0F2E4A 100%);
+      color: white;
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .ceo-hero::before { content: ""; position: absolute; top: -50%; right: -20%; width: 60%; height: 120%; background: radial-gradient(circle, rgba(232,93,4,0.15), transparent); pointer-events: none; }
+    .ceo-hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .ceo-title { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
+    .ceo-tagline { font-size: 1.2rem; opacity: 0.9; margin-bottom: 20px; border-left: 3px solid var(--orange); padding-left: 20px; }
+    .ceo-badge { display: inline-block; background: rgba(255,255,255,0.1); border-radius: 40px; padding: 8px 20px; font-size: 0.85rem; margin-bottom: 25px; }
+    .ceo-image-main { border-radius: 30px; overflow: hidden; box-shadow: 0 30px 50px rgba(0,0,0,0.3); }
+    .ceo-image-main img { width: 100%; height: auto; object-fit: cover; transition: transform 0.5s; }
+    .ceo-image-main:hover img { transform: scale(1.02); }
+
+    section { padding: 80px 0; }
+    .section-title { font-size: 2.2rem; margin-bottom: 12px; color: var(--deep-blue); font-weight: 800; }
+    .section-sub { color: var(--orange); font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; }
+
+    /* Stats Row */
+    .stats-row { background: var(--gray-light); border-radius: 24px; padding: 40px; margin-top: -40px; position: relative; z-index: 5; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; text-align: center; transition: background 0.3s; }
+    .stat-card { flex: 1; min-width: 150px; }
+    .stat-number { font-size: 2.5rem; font-weight: 900; color: var(--orange); }
+    .stat-label { color: var(--slate); font-weight: 600; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .expertise-list { list-style: none; }
+    .expertise-list li { margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+    .expertise-list i { color: var(--orange); font-size: 1.2rem; width: 24px; }
+
+    /* Experience Cards */
+    .exp-card { background: white; border-radius: 24px; padding: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 30px; border-left: 4px solid var(--orange); transition: all 0.3s; }
+    .exp-card:hover { transform: translateY(-5px); }
+    .exp-title { font-size: 1.4rem; font-weight: 800; color: var(--deep-blue); margin-bottom: 8px; }
+    .exp-company { color: var(--orange); font-weight: 700; margin-bottom: 12px; }
+    .exp-date { font-size: 0.85rem; color: var(--slate); margin-bottom: 16px; display: inline-block; background: var(--gray-light); padding: 4px 12px; border-radius: 20px; }
+
+    /* Certifications Grid with Real Logos */
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
+    .cert-card { background: white; border-radius: 20px; padding: 28px 20px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.03); border: 1px solid var(--gray-border); transition: all 0.3s; }
+    .cert-card:hover { transform: translateY(-5px); border-color: var(--orange); }
+    .cert-logo { height: 60px; width: auto; object-fit: contain; margin-bottom: 16px; }
+    .cert-card h4 { font-size: 1.1rem; margin-bottom: 8px; color: var(--deep-blue); }
+    .cert-card p { font-size: 0.85rem; color: var(--slate); }
+
+    /* Gallery Grid */
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .gallery-item { border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.08); transition: all 0.3s; cursor: pointer; }
+    .gallery-item:hover { transform: scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+    .gallery-item img { width: 100%; height: 250px; object-fit: cover; transition: transform 0.5s; }
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    /* Expanded Case Studies */
+    .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 32px; }
+    .case-card { background: white; border-radius: 24px; padding: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid var(--gray-border); transition: all 0.3s; }
+    .case-card:hover { transform: translateY(-5px); border-color: var(--orange); }
+    .case-icon { font-size: 2rem; color: var(--orange); margin-bottom: 16px; }
+    .case-stats { display: flex; gap: 16px; margin: 20px 0; flex-wrap: wrap; }
+    .case-stat { background: var(--gray-light); padding: 8px 16px; border-radius: 40px; font-weight: 700; color: var(--orange); }
+    .result-badge { background: var(--orange); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-block; margin-top: 16px; }
+
+    /* Thought Leadership */
+    .thought-card { background: white; border-radius: 24px; padding: 40px; border: 1px solid var(--gray-border); }
+
+    /* CTA Section */
+    .cta-section { background: linear-gradient(135deg, #0A2540 0%, #1A3A5C 100%); color: white; text-align: center; padding: 80px 0; }
+
+    footer { background: var(--deep-blue-dark); color: #cbdde9; padding: 48px 0 24px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
+
+    @media (max-width: 900px) {
+      .ceo-hero-content { grid-template-columns: 1fr; text-align: center; }
+      .ceo-title { font-size: 2.2rem; }
+      .two-col { grid-template-columns: 1fr; gap: 40px; }
+      .container { padding: 0 24px; }
+      .stats-row { flex-direction: column; }
+    }
+
+    .sticky-contact { position: fixed; bottom: 32px; right: 32px; z-index: 999; background: var(--orange); border-radius: 60px; padding: 14px 28px; color: white; font-weight: 800; display: flex; align-items: center; gap: 10px; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    .floating-whatsapp { position: fixed; bottom: 120px; right: 32px; background: #25D366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8rem; z-index: 999; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    [data-aos] { pointer-events: auto; }
+    
+    .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    .lightbox img { max-width: 90%; max-height: 90%; border-radius: 16px; }
+    
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body x-data="ceoData()" x-cloak>
+
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="image 1.png" alt="PrimeFleet Logo" onerror="this.style.display='none'">
+        <div class="logo-text">PrimeFleet<span>Solutions</span></div>
+      </a>
+      <div style="display: flex; align-items: center;">
+        <button class="dark-toggle" @click="toggleDarkMode"><i class="fas" :class="isDarkMode ? 'fa-sun' : 'fa-moon'"></i></button>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="#experience">Experience</a>
+          <a href="#case-studies">Results</a>
+          <a href="#contact" class="btn-primary" style="padding: 8px 24px;">Get Consultation</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="ceo-hero">
+    <div class="container">
+      <div class="ceo-hero-content" data-aos="fade-up">
+        <div>
+          <div class="ceo-badge"><i class="fas fa-crown"></i> Founder & CEO | PrimeFleet Solutions</div>
+          <h1 class="ceo-title">Fredrick Mwaluko</h1>
+          <p class="ceo-tagline">Technical Manager | Mandela Group of Companies<br>Founder & CEO | PrimeFleet Solutions</p>
+          <p style="font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9;">Optimizing Fleet Performance, Safety, and Cost Efficiency Across Africa</p>
+          <p style="margin-bottom: 35px;">Delivering data-driven tyre and fleet engineering solutions built on over 17 years of hands-on industry experience.</p>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="#contact" class="btn-primary"><i class="fas fa-calendar-alt"></i> Request Consultation</a>
+            <a href="https://www.linkedin.com/in/fredrick-mwaluko-97ba1170/" target="_blank" class="btn-outline-light"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
+          </div>
+        </div>
+        <div class="ceo-image-main" data-aos="fade-left">
+          <img src="IMAGE 2.jpeg" alt="Fredrick Mwaluko - CEO">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Row -->
+  <div class="container stats-row" data-aos="fade-up">
+    <div class="stat-card"><div class="stat-number">17+</div><div class="stat-label">Years Experience</div></div>
+    <div class="stat-card"><div class="stat-number">12+</div><div class="stat-label">Global Certifications</div></div>
+    <div class="stat-card"><div class="stat-number">50+</div><div class="stat-label">Fleets Optimized</div></div>
+    <div class="stat-card"><div class="stat-number">30%</div><div class="stat-label">Avg. Cost Reduction</div></div>
+  </div>
+
+  <!-- About Section -->
+  <section id="about" data-aos="fade-up">
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <div class="section-sub">About Fredrick Mwaluko</div>
+          <h2 class="section-title">Fleet & Tyre Engineering Specialist</h2>
+          <p style="margin-bottom: 20px; font-size: 1.05rem; line-height: 1.7;">Fredrick Mwaluko is a seasoned Fleet and Tyre Engineering Specialist with over <strong>17 years of experience</strong> across transport, logistics, and industrial operations.</p>
+          <p style="margin-bottom: 20px; line-height: 1.7;">He currently serves as a <strong>Technical Manager at Mandela Group of Companies</strong>, where he leads fleet performance optimization, tyre lifecycle management, and safety-driven engineering initiatives for commercial and industrial clients.</p>
+          <p style="margin-bottom: 20px; line-height: 1.7;">In addition, he is the <strong>Founder & CEO of PrimeFleet Solutions</strong>, an independent consulting firm focused on helping organizations reduce operational costs, improve safety, and maximize asset performance through structured, data-driven strategies.</p>
+          <p style="line-height: 1.7;">His dual role uniquely positions him at the intersection of <strong>real-world operations and high-level consulting</strong>, enabling him to deliver practical, results-oriented solutions.</p>
+        </div>
+        <div>
+          <div class="section-sub">Core Expertise</div>
+          <ul class="expertise-list">
+            <li><i class="fas fa-check-circle"></i> Tyre Lifecycle Management & Optimization</li>
+            <li><i class="fas fa-chart-line"></i> Cost per Kilometer (CPK) Analysis</li>
+            <li><i class="fas fa-cogs"></i> Fleet Performance Engineering</li>
+            <li><i class="fas fa-search"></i> Tyre Failure Diagnostics & Forensics</li>
+            <li><i class="fas fa-sync-alt"></i> Retreading Strategy & Implementation</li>
+            <li><i class="fas fa-chalkboard-user"></i> Driver Training & Operational Efficiency</li>
+            <li><i class="fas fa-tools"></i> Preventive Maintenance Systems</li>
+            <li><i class="fas fa-shield-alt"></i> Fleet Safety Optimization</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Professional Experience -->
+  <section id="experience" style="background: var(--gray-light);" data-aos="fade-up">
+    <div class="container">
+      <div class="section-sub" style="text-align: center;">Career Journey</div>
+      <h2 class="section-title" style="text-align: center;">Professional Experience</h2>
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div class="exp-card">
+          <div class="exp-title">Technical Manager – Fleet & Tyre Operations</div>
+          <div class="exp-company">Mandela Group of Companies</div>
+          <div class="exp-date"><i class="far fa-calendar-alt"></i> Current</div>
+          <ul style="margin-top: 16px; list-style: none;">
+            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--orange); margin-right: 10px;"></i> Lead technical operations for fleet clients across multiple sectors</li>
+            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--orange); margin-right: 10px;"></i> Design and implement tyre lifecycle management systems</li>
+            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--orange); margin-right: 10px;"></i> Optimize cost-per-kilometer (CPK) performance models</li>
+            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--orange); margin-right: 10px;"></i> Improve fleet safety through structured inspection and training programs</li>
+          </ul>
+        </div>
+        <div class="exp-card">
+          <div class="exp-title">Founder & CEO</div>
+          <div class="exp-company">PrimeFleet Solutions</div>
+          <div class="exp-date"><i class="far fa-calendar-alt"></i> Current</div>
+          <ul style="margin-top: 16px; list-style: none;">
+            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--orange); margin-right: 10px;"></i> Provide specialized fleet and tyre consulting services</li>
+            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--orange); margin-right: 10px;"></i> Develop cost optimization and performance tracking systems</li>
+            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--orange); margin-right: 10px;"></i> Advise logistics and transport companies on operational efficiency</li>
+            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--orange); margin-right: 10px;"></i> Implement tyre lifecycle and retreading strategies</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- International Certifications with REAL LOGOS -->
+  <section data-aos="fade-up">
+    <div class="container">
+      <div class="section-sub" style="text-align: center;">Global Recognition</div>
+      <h2 class="section-title" style="text-align: center;">International Training & Certifications</h2>
+      <p style="text-align: center; margin-bottom: 48px; color: var(--slate);">Fredrick's expertise is reinforced through global training programs and technical certifications</p>
+      <div class="certs-grid">
+  <div class="cert-card">
+    <img src="https://logowik.com/content/uploads/images/enoc-emirates-national-oil-company6106.logowik.com.webp" alt="ENOC" class="cert-logo" onerror="this.style.display='none'" loading="lazy">
+    <h4>ENOC Lubrication</h4>
+    <p>Dubai, UAE</p>
+    <small>Product & Technical Training</small>
+  </div>
+
+  <div class="cert-card">
+    <img src="https://compratri.com.br/img/uploads/companies/367/vipal-borrachas-60bfc1f957c07-original.png" alt="Vipal Borrachas" class="cert-logo" onerror="this.style.display='none'" loading="lazy">
+    <h4>Vipal Borrachas</h4>
+    <p>Brazil</p>
+    <small>Retreading & Fleet Management</small>
+  </div>
+
+  <div class="cert-card">
+    <img src="https://cdn.vectorstock.com/i/500p/92/81/pirelli-tyre-logo-vector-34979281.jpg" alt="Pirelli" class="cert-logo" onerror="this.style.display='none'" loading="lazy">
+    <h4>Pirelli Tyre Campus</h4>
+    <p>Turkey</p>
+    <small>Tyre Engineering & Production</small>
+  </div>
+
+  <div class="cert-card">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYUAAACBCAMAAAAYG1bYAAAAz1BMVEX///8GCAcAAADWLSnMzMwFBwYKCwspKSkQERAAAwG2trbT09MFCAZ/gH/5+fnfr67VGhTDw8Pv7+/o6Ojh4eFJSUmXl5fZ2dltbW319PTIyMgZGhmhoaGoqKgvLy+9vb1TU1M/Pz8hISGOjo51dXWQkJA2NzZcXFxvb2+HhoakpKSvr69ERERgYGDUtrbXJSDs1tbThYTUAADOHBfLSkjRPTrTMS3eoaDnxcTXW1nSYF7Un5/RbGrHeXjh1tbIT03Qr67LPTrUj47Xe3r05uYGGQ9DAAARp0lEQVR4nO1cCXfjtrUWUREiJUqN9n21VkuO05lMlr7XNm3z/39TcVeAtNzaMzmdcxp8x5kZUSR4cdcPF3BqtYiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiI19H/9o9VfNupLUfd8fRri/a7wXd/+vBNBR8+flubWuOwH3xt8X4f+O775z9U8Pzp21qta6xNcrNbfG0Bfw/ofaoa4fmHH391XzyAFWxiTLvztWX838eP37wIhJ/g+nRrEpsm7j/T/Noy/u/j50oofPhzH6/3jE3SxDqY239JlEGX8f5a1LqOCNf6Z7+19+63/mboVKoCVATEwiSM3M7oUqtRxnayX1dY1H7H3+2eeJh56ZHjcLJv3mFe0/plNU8Nw86Ho7JO+tfJsPL2xmrMX9ZPO+ORtdmIy3n1CY8duVrprdn8aR1Ktmzcju7WuWB3nLRnVQcZP94R7N1e9N0PpWz04Sf54snFAiJNJCUtzR08jULJgy/wc2dz75nTqGyH3ugEl1Ob5gD3pzHDgBVMR407o+zoy8HE/TsXl0kK9+kBh7/de7VIALWuuce3pklepGlR4PUg+07uPThvl/Lzw717Vu/m9/8XhsLzz7/K9UHDlQWcVmbNiK5tNTwYLl05T0q8XAMjX5gr6dcULx6Bii9DIuorA8+5KsSGd385mryRcOjdTPXNDmYoekjkOfnbbEHJd55RS62dFw9d0KE8Vh93b31Q1wim6+9xot/6ckvHOY8K7QWbvNcItf8PrPDNX9QItSZIyCKwRmuBx/GcneJSa7KDPHUVwXPT4mEqItoUxk1DM7R2LgosMgG6B25xcWHafMPIvJgpTLbtjYA6KkghWMoW4ADpa1YwxykqmYQhFRf4T6dlnqxj6vmdR8HvVMsHopFlpGb2XiNMPUN6/vRj8IUrC7aQYcnZp75S5MYlDpQJM5ZZ8lNto95IDrOnZ5x+DD0jmjI7zeoGlAxEIKGAtmSrRG5BdVr8SXPIPpS2cLJLeLZIM0juOT2bgAFvU/cV+EhaIM9DKQr3wcGlni5QQFIg3I2JiayfmAZn9cdwupTzcLaqj9qYBMNRipzFys1KY+Wt+KNa4fn7vwbXXT4vxMimQcM+GPbm1GY2yxKTiiOYBiWP/s2I4c40Dl2AhG/dIynmfhJbggFSH42bmFV78Xi2bEkr9Whk6CNYKckyyiHWPLnsW8+AybmvzLE7GAzGRyR2EIqz2lnSdIY2TZJELgzrtenEZPxaVwwOo/3RsKlUxycW3eY2m88z50SSlsy+4nNuZJQJZTPnd6+vNCE9/61U2INwdkyVhn0y4tbLcavVmrXh3SmplOw0lvliSnBYyzB55p5o1bsHo9HC/BejmieHVW2ciVnMgR2C48mslvWWYsB6cI8XZkhuMJgbFqhb6zYZ+5wUbBpX+NgFLrswhZjmhlrvHVUwZnciujXNsbPw7KBeZ459FkweOT4Ggr07FHqyWnj+vswMu0E+50w5WEksGL7pqqWJq8BSErhlsyxlGM2lV6gBeKUQc9PnVDzMqVZiAa/UjcSTqTLAvoG6ZIOF5Z5sClYQDDQUznptOpeSblY88abanqp+S0U/sloPRgba4XRbzl3IvObLlhrCUz/8szLO3ltB3tGqiEnOwHJRYXhSydlQvk6ImpR7pQYj7EGH2IoI3nQYC49qlJBXIRai80yuXMiDUyBBDCckGVqrFyhU8rne2KInoWLVSDCZrngHsBOyHJWOkWH7Ko34THD74odfKtfHDV+aRIF71agyeVIyFFKkBR2XOvmWC34/leSSZ+LGg6OWDsg/zigplU/vvQeuA2y6lRrlxbIYFIw3ipf3j0LZNS0sJbOYrCXXHPVNWIEXuaa+n1OQPqnxxXh9jYUTfm5gkfMs4rPxdzTCR1kv1zqsrCu90IZyJqJR1UbniYqSUyFOeqwLPfawsWpAub+zQsqGIR3RXH2ag2WJAF4kFcpxG9UiY4qMvrBaLmv9A+NRZ3RTba70wS5HjJWCVtNYcLJv4WPPEw255VGz2IQGSZgzbL5sF6b/ESPhHyryntcsbVQvrmIuXPE7qtGbaLQPIQl52ViUVAutaZB3LDR8dEXhai/XBbTCVnWkq6Xa4cI4wKhroUzekgKtVJoj70yRWb8T8qQXJ5pt/DVfFzbwsZ7IdNU9LlL1KBlwyLr1ksbT5+Enl5Cev/lFmdVEsmQDGB+w5Lmui9eaGFTypaEVg3jDXq2woRukThS6FHIuJ4aB9MtLa81pdzAx5SwXQEnu60+r2DYsC+xQNiziS7X2iT6maWkutd5GrYA+djYSxb4GfRb++fyH55/Vw1zNH5JB6hAK6W74EEyurTOWWuRoYYJsneXoN9QKxIj6W01iHT+M0D1Qqi4FgrZAGeOdxuBLIrJhRSSv7wmyI6Q2T/UNI53K0I+5EdOQx0z0HsmDA8N9DLPqkGASZPff/Fb8Cv3U7+TTYGeETzrikuSrRTjt3lBVzKbvTNQ3Nnih7hcxxGZmKVdrc9RxhnxTah79XIPMXkVdSqJjowGuGHxnUQQsec/3etrToU80mr29hoPwWknHi+aXGWGlUnofDa/ayA3rMnBFsHcv2X76+PzJR4KzLdOhDi4b3aJ94YccmFwYAl1wjl7YAhdxR5rfgzi2ZWJ/UDN5Kkc0CrzfJYPxXHX02r6qb0RpBxqBrxReU6C45jh6USbr85xjwfNc8eLAz2F+EnKo9rGKfpIxn9T3Udb9K4K9Ufcev3z8pI3sPpBK1p6remR0c1IjdVWsYW3am44vkJOhNDuyzsGx5fxgTUbWO+kz6qYt9jhrYHdgJrnYvrrueTLJy6aczblvfgr6qSDv9qHiik2Jz8DOXU/lpsGNYgVctyzktd6BGuxknH89lw+hVeTt+LtfMF/nju+YDc1hJtorzE6S6YbJMRCECxodWZojUUdxqDl3OKQs9GSY3PvcSK0A4p41F78qvCSkymR5gdAbakcExIWAOJfsuZf2kPUFfOsbD/7Gi9yIQ099JZbh6im3WKmtNr3fsQ0owBvR+7M2shfYEhJ3AcaJvbygi5uxOvJ8Rv1rtsGqLWK2iBPCVWLrXeq0hUWwM9FeFHRrCuXkSjOm2o7BfDy+63FWuU2vnYXqALJ1DNdQmSafnV7jjl9pgT3d6I2gx7p0tXPNMI9lj2netULgb2+2ghphlABzUd628lNPDXeXUwnY1QByKO4AOLd49NTmKqzTZJSALmSsMKoHOy0EI2QdPOhchX/UBIv1emG0kRnCek3X99SW9ma4+Wjo6zeeXzvuylXWv1Vzo5swPK0NMR8uWgdo7XPRklQS7PjuVp5iDenF5WZ+YydMtqzBNTbuLLPpTKmN5yUBG7lhulX3sn61UPfrg2mwtS2p0L0bkhT08HmvBOeOretJO8AhTDvj9s3guNIWPGlxUE6aeBkuypWDNe9ZCRB2VDfKoKWm93ynFzyAgxqqfkkwXbO/G9Q0gsY4fV4aa9W5uMl2IW1YIndHVZ+neuJ2ugxWQp34XuhFeQZwbu9eGiw9y16YY+OgLxU/N/+uS9CbbWHngqS2AfWZmIyzve/17DUW/M5kB/gIOggldrSqDVdkfZUV91L6R01Qv81pravhpqO07c4m2MYjK0xPml1AOSPVrzYzpdMAXR2aMPk9cIq53jTXBw+4GK12XGFp7VCAT3ZqQkWhS7D9D7MYT4xvq4tRQVfVrjZNxSscAY0l2jVFtVP/C9pMW8kwyphpE6fuKdX7tP0KrrhPhJST3gj+ZytW6BdcVel8QVO6wIkvcL7TsJuW5PZKqbVy7W/WYa65ZF919Afcgk6kV3OR/a7/3DzudOcqgbSVZsqwfCPLrfil0vjltu5sEwFaaHNCq8lZ1Y6CuXqFoZP6gb8EM9iqsGkGASrti9Qbga1wUB9GGXq+BmhKWlXTix5h8Cn5YIQBb1BHsgnmu51HOhAo2zTHcpM7xHjNaIoJm5qq5RjbQqJaSEYN/ZzZnl9g9VZaK1D4i658dKmnLdYMR2oYIeG+E/X5mFkZXfilVn+6TFRFtG4svrTjt3N4e7DWynLpNMiJDaFMDdFAz1sKSoffzdH2RYtSliMeOzB+z8hKaV5tTzgRqqvVmTJ6iQVPP33m1GMiQSN2gKEA5ByVOpXi7I3XklW+aeBMspy32Rq/wZl2V0HV7XOuaTtvBfGG/k5loKx10KmsyjsSifLUmYaLFsGm7wnBML6d0wzu4GBZ0Uex5PF+V7tIAy450x0CsarnqV7j3va+q71X0rDFrac5lyNf0ZY6PXS7tW41vN5TfzP6KyWlqSxrusFyRLgJb+KnWov8trRwVb+3yecxfA9WimDnphkZueTxpRXayhBRkcwC0lBjDN9x0MS8kL0beePMS+kZZGU/FcDtLCsHQ7RR54O0ra/DsR+0jvhtkc8F7D5KCVCXbQcJyTKbGyktk86Bnx+tt6e+NFJSdqVDnhE3fpC3FaT2l1aY7rga04bBXTrD8GsNTd1CfHUzXiM2z/0qz1tBLXOikHPmm2Oo+00gdSDpGuVY0oMGx7vXylXQQQQ9h0KChocvpKpNfaEVSuQ7AxSSAz0+J6sFdZ4GT+RidGVE1dhbQRwqaGz28SMm+sJliherBahMyIS1BTXTh5lmBNUrWJ95K0hJ2/uzOKPS5Pzi2h/IwGaMtttN8aW/ctY5BY0wSSRN6QbQ4UHq6w7kpbmSu4kPBvw88nsLJPlVm5Ko4vHopKs6yQVH3zXggr5QKsbvVWd4EQsgAA5YhI1gOCRpxD9l2ZiWTo4u5UiGTGbC/S/Ymebtc6nyW9Hxo+6KoJ3WRvP4F+6zARcKGlJm/jSZTOZ6LBePbxoS1L20YLEkuygH5Bh60lMhFNQ1SSZW+yxihFRK7VErUG7Mzr1et9WYIUorTw4xhk38B9n5ckJ1B4PxKDUFEG7ra8jMr2qC3ZxgDbHbt1oHOEmR8Pb5ge0kUqjx/BbXlWYvkZ+X5Xr3Em5Z7RnjMDm/DU9tys6B30/W2azFFakwdLaaKJ8oHWRCh2yaO/1o0INV2Fe1xGHbiJvl7GKlMx0WQrMA4Ml6PBa79pnTmfBoaPEbhoKeLrOlben+1jsQdQYtnRN2q+IpP6e7e/wMbrtavIRueTDWasc8NXpC1a+M3ohFKf9TfbAJ/7DPrng+QruD362qp2oZ4BFjf9aLqrUyLVyWY3qTBdtNKiXsUxfycptYOUOXSL9Cz+H76oUjQKJwSV9vt3QEnrroXkYNtbS0AaY73/QnneXBfiH5T9+vaqR9cQVegUePjvzZfWISrd0eaLO884xe1zuezFR+xBHMmYXoyUlak2nfdnDUA2DQallLQpLDSmpkdFErv5rgRt353u9It2iwYauHj2X5LfoIbZBIDR0oQeDURL8ZkfsDfPdWCzCqtjAoE+GjTnDp6yrRMMoJ2rSlVUgyGMxzbR3aIMrf2c0YZy6MNJZyPfXNv0cDeNIo7uZ8X9BpgLYRXIbj6mOk0wXmClmk7uELfirhvzHnHMIW5AGTIHslWYru43BZGEPjeFH9YnkMp8cKNiI8Dt/tfEOhhYPD+yub2n34JZ+EKFaRYAfNIVx20Nt8h3xu6Kx+LsV4RILBOCZn9RhfzN8GR+az1zE/Di/NvtdWU24Oi9xgJ7eD9z/pLRt6wS19MexqexoNKpsg/fZ2Xq5vabbb6i+1dZa3F8PsJjLGdH3blZ7dbdZBSnjUOdpK+2PaHGalB+fDZT84qyNz0QWFsTyQ9Cs66619XbC3WqH+7/DiIKJ8Mevdu1p3Lx+EHwCD+gu80ocfr5fL5WF/PrcP7h/Lbr186LNVHabUtxk0l+fNEHAaLdeVls5MJ/Ty1a3rco8Pbs6LZbM0476+SqerVwLZXszv9/0/SegQPvfB316giIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIj7+BeFcxADU73d+wAAAABJRU5ErkJggg==" alt="Bridgestone" class="cert-logo" onerror="this.style.display='none'" loading="lazy">
+    <h4>Bridgestone</h4>
+    <p>South Africa</p>
+    <small>Tyre Management & CPK</small>
+  </div>
+
+  <div class="cert-card">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8QEBUQDxAWExUSGBAYFxUYGBcYFxcbGBcWGBYWFh0eHyggGBolHRcYITEhJykrLi4uFyEzOTMsNygtLisBCgoKDg0OGBAQFy0lHx0rNS0tLSsrLystKy0vLS0rLy0tKy0rLSstLS0tLS0tKy0tKy0tLS0tKy0tLSstLS0rK//AABEIAK0BIgMBIgACEQEDEQH/xAAcAAEAAgIDAQAAAAAAAAAAAAAABgcEBQIDCAH/xABLEAABAwIDAwcHBwoFAwUAAAABAAIDBBEFEiEGMUEHEyJRYXGBFDJSVJGS0SNCU3KTobEVF0NigoOUwdLTCBYzorIkNOJVc6Oz4f/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EAB0RAQEBAAIDAQEAAAAAAAAAAAABESExAhJRQXH/2gAMAwEAAhEDEQA/ALxREQEREBERAREQEREBERAREQEXU6Xq1Ub2h2xoaO7aira14/Rs6cg6rsbqPGyCTSStb5zgO8gLHfiUDd8g8NfwVWu5QmzuPkOG1NVrYuN2i/dG19uG8jwXYMWxuQtyYTFCHFozSl5AzEAE3eDa5HC6uM+yyhjFN9KB33H4hZEVbE/zJGO7nAqpKbGsUldJlw+CoZFLLE5zGuYc0Zsf0lxwO7iuUuPln/dYVNCBvex77Dwe2x95MPZcCKscM2micf8Apq8xu0+TqBkGu4BxLoye4hSOHap8Lgyuhcy+57RcHttxHa0nuTF1K0XTSVUcrQ+J4e08Wm47u/sXcooiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiL4SgErR7UbTUuHw89VyZQb5GDV7z1Mbx36ncONlg7ebZQ4XCHOHOTSXEMI3vPWeIYDa57QBclRrZLYSeqmGJY47nZ3WLID5kQ3tDm7rjgzcOOY7rJ9S34wWVWOY9/oXw6idazrnnZW3OoIs52ltAWt13uUo2e5McNpLOdFz8g1L5elr1hnmD2X7VNGNAFguSaerqip2NFmtAA4Dd7Fg41I1oiZuMs0DRb9V3OEd1oytmtHjhvVUTL7pJZO8NjMf4zBRUW5LqgeV4rTkeZVPk998rCPDmx7VYL4Gne0Kq9gakM2gr4ibc6aojtLKj4OcrYVqePSO4vsbRVIOaJocfnN6J8SN/jdRCq2bxDDwRSv5+A76eQZmH6o+ae1lj2FWivjmgixF00xU2DYi4vMmHudDOBeSiecxcBbMYj+mZ7Hjs3KebMbTw1rbDoStHTiO8cC5vpNvx4cbLWbW7Gx1A52K8crDma9pIc0jc4Ea37d/eFDGunmmyu+RxKDpMe2zW1bWjVzRuE1r5m7nDrB0vadLkRR3Y3ahlfEcwDJo7CWPqPBzb65TY91iFIlloREQEREBERAREQEREBERAREQEREBERAREQEREBaraPG4aGmkqpzZkYvbi4nzWNv8AOcdFs5Doqm2xJxjGIsKaT5PR/K1FtznWHRv1gPDP239SsiWu/k7wKbEKg45iQu+T/t49csbB5rm33ccveXb3BWmAuMMQY0NaAAAAANwt1LmlukmCIiiii1a8PxiJv0VO4793Oyjh+5+5SlQvDnmTGqp/CIUsI8I3Sm/jKVYlQXBZ+b2mvwknr2Hx5633gK7l57x2Yw4yJQbZK5xJ7PKLu+4lehFaniIiLLQodt1syKiPnYTzcsZDo3t0LHg3BHZf8VMV8c0EWO4oKV/KkgLcWgaGVED+aroRoC4mxeB6ElrjqcBv1Vv4TiMdTCyeI3bI0EeI49R7FWm1tK3DsQZUvF6arBp6pu5uV3myHhdu+/6h61mcnNW+jq58KmdcNc58R6wTqR2HM1w+uVqsxZaIiy0IiICIiAiIgIiICIiAiIgIiICIiAiIgIiINXj2JNpYJql+ogjkeR15WkgeJ08VCeRLDHeTS10ustZJI8u42DnD73Zz4hdnLLXmPCntBsZ5YY+0i7pHDxEdlL9k6BtPRQQtFskcY8QAD99z4q/jP626IijQiIgKA7DTc7WVk3B9XUAHrDGBjfwU7nkDWlx3NBPsF1XnJIwmmZIdTK+okPeXFp/4qxL2rnlHjtV1NuE0p9pJXoLCqvnoIpvpY43+80O/mqG5SLeV1X/un+St3k0qhLhNIQb5YmxnvjvHb/areknaTIiLLQiIgjPKHgwq6CaMDpBpc36zOk0eJFvEqrmYmeaw3FL2dGTTTu7IyA1x7TE65+qr1e24sVQLKPLS4vR5dKaeKRg00HOSQk+5lWoz5L8gkzNDhxAK7FpNiqvnqCnkJuXRxk9+UE/fdbtZaEREBERAREQEREBERAREQEREBERAREQFxkdYE9QK5LrnF2kdhQU3yl1nlEFMwnSSrf8A7Y2NH/2lXHSizG9wXn7FqoyUDZeNPXvbf60DX/jEVf8AQvzRtPWAtVmdu9ERZaF8JA1KxsTxGGmidNPII2N3uP3ADeSeAGpUIrPK8Xdke18FId0I0lnHXMf0bD6G/rVkS182k2nlrucosLALCHMmqnf6bQQQ5sXpOtpceHWOeyOCVmHkc0fKabdkNmSszaudHfovbfUtJG82JOh28vkOGxN59zGADoRNH/Fo1OvHdqqr2/5Ta6droqQmljsdWn5Z2h3vHmDsbrpvVnPES8c1ItoeT6qra2eWU81AZHOGWzpJNN7RuYO03O/o7is3BqqbBRzeUz0F3G7ReanzG7i4fpGXJJI139xjh25r6Spkkjfz0LnuvDISQBe3ybt7LjvHYp7gO1WH4p0WO5mo+ifYOP1eEg7teuyJMSyhrYp42ywvEjHi7XNNwQu9QKbB6nD5XT0AAzm8lOTaGbrLT+il0861usFSjAcehrGEx3Y9mkkLxlkjPU4dXU4XB4FRrW1REUUVTYvgb4a7FJQfk5qSpdb9YmF1/wDl7VbKjG2xa2hrJNAeZlbfvAAHibKxKxuSh18Lh7M49j3KYKJclcZbhUFxa4cfa4kH2FS1KToREUUREQEREBERAREQEREBERAREQEREBcXi4I71yRB5+qKQhuLUZHSiljqWD9USOa8/ZzMNu9XFsNX+UUEMnHI0HvGjvvBUE22pmUmMxTyaQVrH08x4BsgyE34WBaf3ZWx5Lap1PJNh0xs+J7rDxsSOy+v7YWr0xO1krV41jTKcBoBkleDkiaRmd+s4/MYDvcdO86L5XYg912U2XS+eZ3+nHbf9Zw6tw47rGCYttrQ0GbyY+UzvPSnebtLtwtxf2BtgL6WGikjVrenDC4itxWZoyEljTpFDfhE0736WznpHgANFoMf5RQxpioGiNv0zxqe1rT+Lr9y0TMHxzF3iV7HRsO6Wo6DQD9HGBfd2AHrUuwTkoooyH1j31b9Oi7oRA9jG6n9okdiv9Tn8VhFPU10rvJ45auXTM4XdbqzuOjfEhSrDOR+oqDnxGoETeMUPSeR2vPRae4O71cFLSxxNDImNY1u5rQGgdwC7k9j1V5jPJjG67qWYtPoSdJpP1hq32FVxtBshV0pzSwuaGkWkGrL30IcNxv12K9FL4RdTVvjFF7N8pNZSWiqx5VDu6R+VaOxx88djte0KeUwosRtVYbUZZohoRpKz9V7T50ZPzXdE8DuKz8e2Aw+ruTGYXn58Vm+1urT7L9qrvFuTTEqN4noZOdLDdrozzco8CdRpuBN+pXis8xaOD465zhT1bRFPuba4jmsLkx31DrAkxnUWO8areqmMO5QSf8ApMcp3EiwMwYWyNsdDIzTUHi2xHAX1ViYRjFow/nhU0x82oYQ4s39GYDq3Zt4+duLlLGpUjKgHK5V83hb2/OnkiYBxNjnNvd+9Tt7gRob3/BVrtefLsZpKBuraX5aXv6LgD4Bg/eJCp3s1R8xSQw/Rxxt91oH8ls18aLADqX1RRERAREQEREBERAREQEREBERAREQEREBERBFeUfZ7y6hexou9nSZ9YXsPHUdziq8wfE2uZHib2PfLADT1LGnIXSBuWGR59FzBZx9JgV2EXVSba4U7C6w18cRkpakGOqiHEOtdw6jcAg8HDf0lqM362VLgNdi8bZKmrbT0xALYKcAkDS1yRlB37w/sI3KWYDsdh9Ec0EA5y1jK+75T19J1yO4WHYobsxiv5Pka0yc5SVHSil4WPHsIOjm7wde+zo3hwBBuCpVjkiIooiIgIiICIiDAxfBaWrbkqYGSgbsw1Ha072nuKhEvJvLSSGfBq19O8745OnG4eiTa5H1g4qxl1yP9nFXUxFqPFJ6OhlqMRgjgdFmOWJ+Zjyd2QfMzOI6NzvvpqtXyV4XI5suJVA+VrHFw7GXJFuwk37g1a3FJ3Y9XtpYSfIqV2aV43SO1GnWDYgdmY8QrPp4WsaGNAAaAABuAG6yDsREUUREQEREBERAREQEREBERAREQEREBERAREQFj19HHPG6KVoc14IIIuCDobhZCIKXxTC5MGe6KZj58OmdfTWSnefnsJ49fBw0Ou+TbO4w+kYy7xUUsn+nKzgOr9Ujiw6hTyrpWSsLJGhzXCxBFwq1xLY+qw57psMIfE/WSlfdzH2tw6+ojpC3HctbrOYsqkqo5Wh8bg5p4j8D1HsXcqtwPHYXO+RkNHNudBK7oE3tlZIei7X5rgHKZQY+9hDaqEsPpDcfA/yJUxdSBFhwYnA/zZB3HQ/esprwdQQe5RXJF8JXEzN9IIOa+ErpNR6IutHtDtZR0QPlEwLxuiZZ0nZcfNHa4gIN9JKLE3sBqSdBb+QVbbQY/Pispw7CzaLdPU65ct9Q0+ibftbt1yfhhxPHDZ4NFRH5uueQcL7swPbZvY6yn+CYNT0cQhp2BjR7SeJcd5Par0nbq2bwKGhp2wQjQb3cXOO9zu0/yA4LaoiiiIiAiIgIiICIiAiIgIiICIiAiIgIi1O0O0dHh8fO1k7Ym8AdXOPU1o1ce5BtlG9rduMPwxt6qYZ7XELLOld+zfQdrrBU7tpy3VU+aLDW+Tx7uddYzO7hq2Me09oUW2V5P8Vxd/OhrmxvN3VMxdZ265bfpSG3VppvCDbbWcsuJVb7UrvI4gdAw3kdu895H3NA38d6j35xca/9Rm97/wDFr9sMLho6yWlglMrYCGOkNhme0DnCAPNAfmFrnzd5WsoqV80jIoxmfI5jGjrc4gNHtKD01yJVNdUYe6rrqh8xmkdzeY3sxnRPcS8P9gVhrX4FhjKOlhpmHowRxsvoL5WgFx7Sbk967XYnTjfPGP22/FBlosL8r0vrMX2jPin5XpfWYvtGfFBr8e2To6wEyx2d6bdHe3j3G4UWdsnitGLUNYJI9PkpRcdwBDh7A1TpuK0xvaoiNhc9Nug6zruXz8r0vrMX2jPirqYrt2M4jDpUYOXn0oS8Dvs0PHX1I3bujZo+lqmniLMNvaQfuVhnFqT1iH7RnxXz8qUnrEP2jPihiB/nIo+FPUnwj/qXNu2OIS6UuESa7nyF9j/ta3/cpyMUpPWIftGfFfRi1J6xD9oz4oYgxwjaCt0qKllJG7eyLzh2dHU++t3s/sBQ0pDywzSDXnJOlr1geaD22v2qQPxWmBINRECCQQXtBBG8HVfPyvS+sxfaM+KaYzAF9WF+V6X1mL7RnxX0YtTHdURfaM+KisxF1Q1Mb/Me11t+Ug29i7UBF1T1EbPPe1t/SIH4rHdi9KN9REP3jPigzUWv/LlH61D9qz4rmzF6U+bURHukYf5oM1Fwika4ZmuDgeINwuaAix5a6Fps6VjSN4Lmg/eV0OxqkG+phH7xnxQZ6LWnH6Eb6yD7WP4p/mCh9cg+1j+KDZIsJuL0pFxUREHjzjPiiDNRFwmlaxpc9wa1ouXEgADrJO5BzWLiWJQU0ZlqJWRMbvc8ho7td57FV223LbS0+aHDWipk3c6dIW93zpCOyw7SqfmmxfHqn9LVScGjSOMG57GRt0OptdBZe2vLmOlDhLOseUyN++OM/i/3VXGFYBi+OzmVoknLiQ6eQkRt42zHQAX8xu6+gVqbFch8ENpsUeJnjXmWEiIa6Z3aOfw00G/zgtrtZyr4ZhbfJaGNs8kYyiOLK2CO2mVzhpcei0HdYkIGxXI1Q0eWWsPlcwsbOFoWn9Vnz+91x2BTraLFGUNHNUuAywRvcG6AEgdBg6rmzR3qgfz7Yx9HS/Zyf3Fp9q+VPEcSpjSVDYWxuLC7m2OBOU3AJLjpex8EEKqJ3yPdI9xc55c5xO8lxuSfEqU8nE0VNUPxKduZlCzO1t7Z5n3ZBH178zr8BGT2GJLeYqww0dNDxmz1LxaxAcTHCCeIysc8dkyDYYntNjGN1AhMskjpiQynjJbHxOUNvYgD5zrmw1KllDyD4m8XlqKeLsu958bNA+9bL/DjgLXST17wDzdoY+sFwzSHs6OUftFXygoAcgFV69F7j/in5gKr16L3H/FX+iCjaXkOqo4JohVwl83NDOWydFjXF7mjXe5wj8GnrWD+YCs9eh9169AIg8t7d8mEuEUwqJquJ+Z7WNY1rg5xIJJF+AAUS2cwaSuq4qSIgOmcGgm9hvLnG2tgAT4Kxf8AENj3PV7KNp6NIwZhb9JKA494yc37Ss3/AA5YFnqJ69wNoWiJh0sXv1f23DQPfQfPzAVnr0PuvXXUcjr8Oaa6rqo5IaUc6+NrXBzwzURgnTpGzfFehFUP+IvHubpIqFpGaofneOIZHYj2vI9woKAqZ3zSOkkJc+RznOPFznG5PeSVbMHIHWlrS6shaSAS3K85SRqL8bKq8KrnU88c7Wtc6J7Hta8EtJabjMLi4uNysYcueM/R032b/wCtBsvzAVnr0PuvXTV8g1YyNz/LYOi1ztQ9o0F9TY2HasU8uGNAXMVPbr5qT+tazGuVLGMSj8iLooxOQwiNuQvDtMjnPcQ1pvrqO02ugg1HWSwv5yGR8Txucxxa4eIIKt7azlarYqKlpoH5ap8EL6iawzNzC7WtBFg9zbPJtpnFrcOGyvIxLGDV4w9scUTTI6BjsznBoLi2Rw6LG2HzS4m53Kp8SrH1E75nAB0r3OsNwudGt6mjQAcAAglGzex2LY4XTMcZAzomeeRxF9DkBOZxNjfQaKXw8gNaR062AHqDXuHtIH4K59i8Cbh9BBSNAvGxucjW8julI7uLifCy3aCgfzAVXr8XuP8AitJtbyOVtBSvq+fimZELvAzNcBcC4BFja/WvTKrHl9x9tPhvkrX2kq3NblG/m2EOe7sFw1vbmQUTsZtHWUNVE6lmcwGSPMy5yPBIBD27jcaX3jgQrG5YOU+oNRJQYfKYo4SWSysNnvePOY129rWnTSxJB4b4XyUbOur8ThYWkxxHnZD1NZqB4uyjxUkxXkNxUSOMUsMzS5xDi9zXkX0LwW2Dj2E96DEwjkaxeshbUufDHzwzgSvfzhDtQ51mO1O/ffXVZw5BMU9Zpfel/trrHJftO0WbKbAaAVJA03Aarj+bTan6R/8AFf8AkgyByB4l61S+2X+hcm8geI8aum/+X+habHdjtoqGnfVVEz2xx2zOFVci5DRYZ7k3I0C23IbtFiMuKNp31MssLmSmRkj3PADWnK5uYnKcxaNOtBfOG4LTwQxwNjaREyNgJa25DGhoJ036ItgiCGbZ8oDKG8dPSzVcw0yxsfzbfryZSPBtz12VE7UYvtBizw2ohqMpIywRxSNiB0t0bdI3G9xJ1XqpEFC7Fchsj8s2Kyc23f5PGQXnskfub3Nv3hXZg+EU1HEIaWFkTB81ot4k7ye0rORAXDm2+iPYuaIOHNN9EewLzDysisrsVnfHSzmOIiGO0T7ZY9HEEDUF+dwPU4L1CiDxvheytdPPHCKWZvOvjZmMbwG5nAZibaAXuT2K4OVXkomqDHUYYA4xRQwugJAJbGA1jmE6EhtgQbebpc6K6EQeS8Gfj+FveymjqoC7R7eZcQbbjZzS094W4G3O1np1H8Kz+0vTiIPMrdvNrPTqP4Vn9pSfk62m2lrMRihqpJGwDM+UugjjBa0eaDzY1JsNNdSrzRAXXUTCNjnu3MDnHjoBc6cV2Ig8d45R4hV1M1TJSVGaaSR5HNyG2ZxIaDl3AaDsC9Kck+AeQYVBG5uWSUc9JpY5pNQHdrWZG/sqYIgLzByumsr8WmkZTTOjhtDGRE+2WO+Yg21BeXkHqIXp9EFTf4ftmX01LNVTxuZJUPDWteLEMjvrYi4u5zvdCtfIOoLkiDExPDoamF9POwPjlaWuaeIP4HtXlbbXYCsw+rfAyGSaPzopGsLszDuzZRo4biNNRfcQvWiIKr5LsdnxChkwvFIZmvET2CR7Ht52JwykFxFucaDbrIsdSCVVO1XJXitC9xbA6piB0lhBdcXNszB0mm1r6EC+8716qRB5do9sNqYWNjjfVZWANGanDzYCw1dGSfEru/zztZ6dR/Cs/tL04iDzLFtjtdIQ1rqpxPAUzb/dEu6Dkw2hxSYzVx5suy3kqH3da+5jW3ItfzbNHDRelEQUdtLQ1GzdNDS4MJJKicukqagQh5c1oysZYhwY27nEN1Iy79TeMHb/AGs65/4Rn9temEQeZDt5tZ6dR/Cx/wBpfP8APW1np1H8Kz+0vTiIPLVY/afGGimljqZmgh2V0TYmXGgLnZWt48Srg5JeTn8ksfNUua+pmGU5dWxMBvkaSLknQuO7QAbrmxUQfF9REH//2Q==" alt="Mercedes-Benz" class="cert-logo" onerror="this.style.display='none'" loading="lazy">
+    <h4>Mercedes-Benz</h4>
+    <p>Tanzania</p>
+    <small>Truck Systems Training</small>
+  </div>
+
+  <div class="cert-card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkY8nGhdfG09PA_tNuJdZClV678uFMdeOhfg&s" alt="Kumho" class="cert-logo" onerror="this.style.display='none'" loading="lazy">
+    <h4>Kumho Africa</h4>
+    <p>South Africa</p>
+    <small>Technical Training</small>
+  </div>
+</div>
+  </section>
+
+  <!-- CEO Gallery -->
+  <section style="background: var(--gray-light);" data-aos="fade-up">
+    <div class="container">
+      <div class="section-sub" style="text-align: center;">Moments & Milestones</div>
+      <h2 class="section-title" style="text-align: center;">CEO Gallery</h2>
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-item"><img src="IMAGE 5.jpeg" alt="Industry Conference"></div>
+        <div class="gallery-item"><img src="IMAGE 10.jpg" alt="Fleet Inspection"></div>
+        <div class="gallery-item"><img src="IMAGE 7.jpeg" alt="Training Session"></div>
+        <div class="gallery-item"><img src="IMAGE 9.jpeg" alt="Tyre Engineering"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPANDED Case Studies -->
+  <section id="case-studies" data-aos="fade-up">
+    <div class="container">
+      <div class="section-sub" style="text-align: center;">Proven Impact</div>
+      <h2 class="section-title" style="text-align: center;">Case Studies</h2>
+      <div class="case-grid">
+        <div class="case-card"><div class="case-icon"><i class="fas fa-chart-line"></i></div><h3>Fleet Cost Optimization – Logistics Sector</h3><p><strong>Challenge:</strong> A major logistics operator faced 22% above-budget tyre spend, chronic sidewall failures, and 14% monthly fleet downtime due to poor alignment and inconsistent inflation practices.</p><p><strong>Solution:</strong> Executed deep-dive axle alignment audits, launched a digital CPK tracking dashboard, initiated a retread pilot program for 200 casings, and delivered driver workshops on inflation discipline.</p><div class="case-stats"><span class="case-stat">31% Cost Reduction</span><span class="case-stat">18% Availability Increase</span></div><div class="result-badge">✓ ROI achieved in 8 months</div></div>
+        <div class="case-card"><div class="case-icon"><i class="fas fa-shield-alt"></i></div><h3>Safety Improvement Initiative</h3><p><strong>Challenge:</strong> Cross-border transport fleet experienced high blowout incidents with 35% year-over-year increase in safety-related events, impacting insurance premiums and driver confidence.</p><p><strong>Solution:</strong> Comprehensive failure forensics analysis, implementation of pressure monitoring protocols across all depots, and preventive maintenance scheduling integrated with telematics data.</p><div class="case-stats"><span class="case-stat">76% Fewer Incidents</span><span class="case-stat">12% Fuel Savings</span></div><div class="result-badge">✓ Safety rating improved</div></div>
+        <div class="case-card"><div class="case-icon"><i class="fas fa-sync-alt"></i></div><h3>Lifecycle Extension – Heavy Duty</h3><p><strong>Challenge:</strong> Industrial mining fleet suffered severe casing damage from harsh terrain conditions, with 28% of tyre budget lost to premature scrapping and frequent replacement cycles.</p><p><strong>Solution:</strong> Deployed tyre lifecycle management system, integrated Vipal retread processes, conducted monthly engineering audits, and optimized tyre application for terrain conditions.</p><div class="case-stats"><span class="case-stat">22% Longer Lifespan</span><span class="case-stat">28% Fewer Delays</span></div><div class="result-badge">✓ $500K+ annual savings</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Thought Leadership -->
+  <section style="background: var(--gray-light);" data-aos="fade-up">
+    <div class="container">
+      <div class="two-col" style="align-items: center;">
+        <div>
+          <div class="section-sub">Thought Leadership</div>
+          <h2 class="section-title">Tyre Tips to Keep You Rolling Safely</h2>
+          <p style="margin-bottom: 20px;">Published by Mandela Group</p>
+          <p style="margin-bottom: 20px; line-height: 1.7;">Highlights the critical role tyres play in safety, cost efficiency, and overall fleet performance, while promoting preventive maintenance strategies.</p>
+          <p>Fredrick regularly contributes insights on fleet optimization, tyre engineering, and transport efficiency across industry publications.</p>
+          <a href="https://mandelagroup.co.ug/blogs/2024/07/03/tyre-tips-to-keep-you-rolling-safely/" class="btn-outline" style="margin-top: 24px; display: inline-block;"><i class="fas fa-newspaper"></i> Read Article</a>
+        </div>
+        <div class="thought-card"><i class="fas fa-quote-left" style="font-size: 2rem; color: var(--orange); margin-bottom: 16px; display: block;"></i><p style="font-style: italic; font-size: 1.1rem;">"Fleet performance is not by chance — it is engineered with precision and expertise."</p><p style="margin-top: 16px; font-weight: 700;">— Fredrick Mwaluko</p><hr style="margin: 20px 0; border-color: var(--gray-border);"><div style="display: flex; gap: 12px; justify-content: center;"><a href="https://www.linkedin.com/in/fredrick-mwaluko-97ba1170/" target="_blank" style="color: var(--orange);"><i class="fab fa-linkedin fa-2x"></i></a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <div class="cta-section" data-aos="fade-up">
+    <div class="container">
+      <h2 style="font-size: 2rem; margin-bottom: 16px;">Ready to Optimize Your Fleet?</h2>
+      <p style="font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">Let's discuss how 17+ years of engineering expertise can transform your fleet performance.</p>
+      <div class="cta-buttons" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
+        <a href="#contact" class="btn-primary" style="background: var(--orange);"><i class="fas fa-calendar-check"></i> Schedule Consultation</a>
+        <a href="#contact" class="btn-outline-light"><i class="fas fa-file-alt"></i> Request Proposal</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <section id="contact" data-aos="fade-up">
+    <div class="container">
+      <div class="section-sub" style="text-align: center;">Get In Touch</div>
+      <h2 class="section-title" style="text-align: center;">Start Your Fleet Transformation</h2>
+      <div class="contact-form-container" style="max-width: 700px; margin: 0 auto; background: var(--gray-light); border-radius: 32px; padding: 48px; margin-top: 32px;">
+        <form @submit.prevent="submitForm">
+          <div style="margin-bottom: 20px;"><input type="text" placeholder="Full Name" required x-model="formName" style="width: 100%; padding: 16px; border-radius: 16px; border: 1px solid var(--gray-border); background: white;"></div>
+          <div style="margin-bottom: 20px;"><input type="email" placeholder="Email Address" required x-model="formEmail" style="width: 100%; padding: 16px; border-radius: 16px; border: 1px solid var(--gray-border); background: white;"></div>
+          <div style="margin-bottom: 20px;"><input type="text" placeholder="Company Name" x-model="formCompany" style="width: 100%; padding: 16px; border-radius: 16px; border: 1px solid var(--gray-border); background: white;"></div>
+          <div style="margin-bottom: 20px;"><textarea rows="4" placeholder="Tell us about your fleet challenges..." required x-model="formMessage" style="width: 100%; padding: 16px; border-radius: 16px; border: 1px solid var(--gray-border); background: white;"></textarea></div>
+          <button type="submit" class="btn-primary" style="width: 100%;" :disabled="submitting">
+            <span x-show="!submitting"><i class="fas fa-paper-plane"></i> Send Inquiry</span>
+            <span x-show="submitting"><i class="fas fa-spinner fa-spin"></i> Sending...</span>
+          </button>
+          <div x-show="formStatus" x-html="formStatus" style="margin-top: 16px; text-align: center;"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div><img src="image 1.png" alt="Logo" style="height: 40px;"><p style="margin-top: 16px;">Engineering-driven fleet performance across Africa.</p></div>
+        <div><h4>Contact</h4><p><i class="fas fa-envelope"></i> mumobrian1542@gmail.com</p><p><i class="fas fa-phone"></i> <a href="tel:+254715598399" style="color: #cbdde9;">+254 715 598 399</a></p><p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p></div>
+        <div><h4>Connect</h4><p><a href="https://www.linkedin.com/in/fredrick-mwaluko-97ba1170/" target="_blank" style="color: #cbdde9;"><i class="fab fa-linkedin"></i> LinkedIn</a></p><p><a href="index.html" style="color: #cbdde9;">Back to Home</a></p></div>
+      </div>
+      <div style="text-align: center; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px;">&copy; 2026 Fredrick Mwaluko | PrimeFleet Solutions — International Standards, Local Impact</div>
+    </div>
+  </footer>
+
+  <!-- Sticky Buttons -->
+  <a href="#contact" class="sticky-contact"><i class="fas fa-calendar-alt"></i> Book Consultation</a>
+  <a href="https://wa.me/254715598399" class="floating-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, offset: 30, duration: 700 });
+    
+    // Alpine.js Data
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('ceoData', () => ({
+        // Dark Mode
+        isDarkMode: localStorage.getItem('ceoDarkMode') === 'true',
+        // Form
+        formName: '',
+        formEmail: '',
+        formCompany: '',
+        formMessage: '',
+        formStatus: '',
+        submitting: false,
+        
+        init() {
+          if (this.isDarkMode) document.body.classList.add('dark-mode');
+        },
+        
+        toggleDarkMode() {
+          this.isDarkMode = !this.isDarkMode;
+          if (this.isDarkMode) document.body.classList.add('dark-mode');
+          else document.body.classList.remove('dark-mode');
+          localStorage.setItem('ceoDarkMode', this.isDarkMode);
+        },
+        
+        async submitForm() {
+          this.submitting = true;
+          this.formStatus = '';
+          
+          const fd = new FormData();
+          fd.append('name', this.formName);
+          fd.append('email', this.formEmail);
+          fd.append('company', this.formCompany);
+          fd.append('message', this.formMessage);
+          
+          try {
+            const res = await fetch('https://formspree.io/f/xbdpgjgb', {
+              method: 'POST',
+              body: fd,
+              headers: { 'Accept': 'application/json' }
+            });
+            
+            if (res.ok) {
+              this.formStatus = '<div style="background:#d4edda; padding:12px; border-radius:12px; color:#155724;">✓ Request received. A consultant will respond within 24 hours.</div>';
+              this.formName = '';
+              this.formEmail = '';
+              this.formCompany = '';
+              this.formMessage = '';
+              setTimeout(() => this.formStatus = '', 5000);
+            } else {
+              this.formStatus = '<div style="background:#f8d7da; padding:12px; border-radius:12px; color:#721c24;">Submission failed. Please WhatsApp.</div>';
+            }
+          } catch (error) {
+            this.formStatus = '<div style="background:#f8d7da; padding:12px; border-radius:12px; color:#721c24;">Network error. Use WhatsApp.</div>';
+          } finally {
+            this.submitting = false;
+          }
+        }
+      }));
+    });
+    
+    // Lightbox Gallery
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const imgSrc = item.querySelector('img').src;
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = `<img src="${imgSrc}" alt="Gallery"><span style="position:absolute; top:20px; right:30px; color:white; font-size:2rem; cursor:pointer;">&times;</span>`;
+        document.body.appendChild(lightbox);
+        lightbox.addEventListener('click', () => lightbox.remove());
+      });
+    });
+  </script>
+</body>
+</html>
