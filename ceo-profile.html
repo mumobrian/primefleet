@@ -133,7 +133,7 @@
     .exp-company { color: var(--orange); font-weight: 700; margin-bottom: 12px; }
     .exp-date { font-size: 0.85rem; color: var(--slate); margin-bottom: 16px; display: inline-block; background: var(--gray-light); padding: 4px 12px; border-radius: 20px; }
 
-    /* Certifications Grid with Real Logos */
+    /* Certifications Grid */
     .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
     .cert-card { background: white; border-radius: 20px; padding: 28px 20px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.03); border: 1px solid var(--gray-border); transition: all 0.3s; }
     .cert-card:hover { transform: translateY(-5px); border-color: var(--orange); }
@@ -141,14 +141,134 @@
     .cert-card h4 { font-size: 1.1rem; margin-bottom: 8px; color: var(--deep-blue); }
     .cert-card p { font-size: 0.85rem; color: var(--slate); }
 
-    /* Gallery Grid */
-    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-    .gallery-item { border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.08); transition: all 0.3s; cursor: pointer; }
-    .gallery-item:hover { transform: scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
-    .gallery-item img { width: 100%; height: 250px; object-fit: cover; transition: transform 0.5s; }
-    .gallery-item:hover img { transform: scale(1.05); }
+    /* Gallery Styles */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    .gallery-overlay i {
+      color: white;
+      font-size: 2rem;
+      background: rgba(0,0,0,0.6);
+      padding: 12px;
+      border-radius: 50%;
+    }
+    
+    /* Load More Button */
+    #loadMoreGalleryBtn {
+      transition: all 0.3s ease;
+    }
+    #loadMoreGalleryBtn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(232,93,4,0.2);
+    }
+    
+    /* Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      animation: fadeIn 0.3s ease;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
+      z-index: 10001;
+      transition: transform 0.2s;
+    }
+    .lightbox-close:hover { transform: scale(1.1); }
+    .lightbox-prev, .lightbox-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 3rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: all 0.3s;
+      z-index: 10001;
+      padding: 20px;
+    }
+    .lightbox-prev { left: 30px; }
+    .lightbox-next { right: 30px; }
+    .lightbox-prev:hover, .lightbox-next:hover {
+      opacity: 1;
+      transform: translateY(-50%) scale(1.1);
+    }
+    .lightbox-image {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+    }
+    .lightbox-counter {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: white;
+      font-size: 0.9rem;
+      background: rgba(0,0,0,0.5);
+      padding: 8px 16px;
+      width: fit-content;
+      margin: 0 auto;
+      border-radius: 20px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
 
-    /* Expanded Case Studies */
     .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 32px; }
     .case-card { background: white; border-radius: 24px; padding: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid var(--gray-border); transition: all 0.3s; }
     .case-card:hover { transform: translateY(-5px); border-color: var(--orange); }
@@ -157,14 +277,15 @@
     .case-stat { background: var(--gray-light); padding: 8px 16px; border-radius: 40px; font-weight: 700; color: var(--orange); }
     .result-badge { background: var(--orange); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-block; margin-top: 16px; }
 
-    /* Thought Leadership */
     .thought-card { background: white; border-radius: 24px; padding: 40px; border: 1px solid var(--gray-border); }
 
-    /* CTA Section */
     .cta-section { background: linear-gradient(135deg, #0A2540 0%, #1A3A5C 100%); color: white; text-align: center; padding: 80px 0; }
 
     footer { background: var(--deep-blue-dark); color: #cbdde9; padding: 48px 0 24px; }
     .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
+
+    .sticky-contact { position: fixed; bottom: 32px; right: 32px; z-index: 999; background: var(--orange); border-radius: 60px; padding: 14px 28px; color: white; font-weight: 800; display: flex; align-items: center; gap: 10px; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    .floating-whatsapp { position: fixed; bottom: 120px; right: 32px; background: #25D366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8rem; z-index: 999; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
 
     @media (max-width: 900px) {
       .ceo-hero-content { grid-template-columns: 1fr; text-align: center; }
@@ -172,15 +293,12 @@
       .two-col { grid-template-columns: 1fr; gap: 40px; }
       .container { padding: 0 24px; }
       .stats-row { flex-direction: column; }
+      .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+      .lightbox-prev, .lightbox-next { font-size: 2rem; padding: 10px; }
+      .lightbox-prev { left: 10px; }
+      .lightbox-next { right: 10px; }
     }
-
-    .sticky-contact { position: fixed; bottom: 32px; right: 32px; z-index: 999; background: var(--orange); border-radius: 60px; padding: 14px 28px; color: white; font-weight: 800; display: flex; align-items: center; gap: 10px; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-    .floating-whatsapp { position: fixed; bottom: 120px; right: 32px; background: #25D366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8rem; z-index: 999; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
     [data-aos] { pointer-events: auto; }
-    
-    .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-    .lightbox img { max-width: 90%; max-height: 90%; border-radius: 16px; }
-    
     [x-cloak] { display: none !important; }
   </style>
 </head>
@@ -295,80 +413,77 @@
     </div>
   </section>
 
-  <!-- International Certifications with REAL LOGOS -->
+  <!-- International Certifications -->
   <section data-aos="fade-up">
     <div class="container">
       <div class="section-sub" style="text-align: center;">Global Recognition</div>
       <h2 class="section-title" style="text-align: center;">International Training & Certifications</h2>
       <p style="text-align: center; margin-bottom: 48px; color: var(--slate);">Fredrick's expertise is reinforced through global training programs and technical certifications</p>
       <div class="certs-grid">
-  <div class="cert-card">
-    <img src="https://logowik.com/content/uploads/images/enoc-emirates-national-oil-company6106.logowik.com.webp" alt="ENOC" class="cert-logo" onerror="this.style.display='none'" loading="lazy">
-    <h4>ENOC Lubrication</h4>
-    <p>Dubai, UAE</p>
-    <small>Product & Technical Training</small>
-  </div>
-
-  <div class="cert-card">
-    <img src="https://compratri.com.br/img/uploads/companies/367/vipal-borrachas-60bfc1f957c07-original.png" alt="Vipal Borrachas" class="cert-logo" onerror="this.style.display='none'" loading="lazy">
-    <h4>Vipal Borrachas</h4>
-    <p>Brazil</p>
-    <small>Retreading & Fleet Management</small>
-  </div>
-
-  <div class="cert-card">
-    <img src="https://cdn.vectorstock.com/i/500p/92/81/pirelli-tyre-logo-vector-34979281.jpg" alt="Pirelli" class="cert-logo" onerror="this.style.display='none'" loading="lazy">
-    <h4>Pirelli Tyre Campus</h4>
-    <p>Turkey</p>
-    <small>Tyre Engineering & Production</small>
-  </div>
-
-  <div class="cert-card">
-    <img src="data:image/png;base64,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" alt="Bridgestone" class="cert-logo" onerror="this.style.display='none'" loading="lazy">
-    <h4>Bridgestone</h4>
-    <p>South Africa</p>
-    <small>Tyre Management & CPK</small>
-  </div>
-
-  <div class="cert-card">
-    <img src="data:image/jpeg;base64,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" alt="Mercedes-Benz" class="cert-logo" onerror="this.style.display='none'" loading="lazy">
-    <h4>Mercedes-Benz</h4>
-    <p>Tanzania</p>
-    <small>Truck Systems Training</small>
-  </div>
-
-  <div class="cert-card">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkY8nGhdfG09PA_tNuJdZClV678uFMdeOhfg&s" alt="Kumho" class="cert-logo" onerror="this.style.display='none'" loading="lazy">
-    <h4>Kumho Africa</h4>
-    <p>South Africa</p>
-    <small>Technical Training</small>
-  </div>
-</div>
-  </section>
-
-  <!-- CEO Gallery -->
-  <section style="background: var(--gray-light);" data-aos="fade-up">
-    <div class="container">
-      <div class="section-sub" style="text-align: center;">Moments & Milestones</div>
-      <h2 class="section-title" style="text-align: center;">CEO Gallery</h2>
-      <div class="gallery-grid" id="galleryGrid">
-        <div class="gallery-item"><img src="IMAGE 5.jpeg" alt="Industry Conference"></div>
-        <div class="gallery-item"><img src="IMAGE 10.jpg" alt="Fleet Inspection"></div>
-        <div class="gallery-item"><img src="IMAGE 7.jpeg" alt="Training Session"></div>
-        <div class="gallery-item"><img src="IMAGE 9.jpeg" alt="Tyre Engineering"></div>
+        <div class="cert-card"><img src="https://logowik.com/content/uploads/images/enoc-emirates-national-oil-company6106.logowik.com.webp" alt="ENOC" class="cert-logo" loading="lazy"><h4>ENOC Lubrication</h4><p>Dubai, UAE</p><small>Product & Technical Training</small></div>
+        <div class="cert-card"><img src="https://compratri.com.br/img/uploads/companies/367/vipal-borrachas-60bfc1f957c07-original.png" alt="Vipal Borrachas" class="cert-logo" loading="lazy"><h4>Vipal Borrachas</h4><p>Brazil</p><small>Retreading & Fleet Management</small></div>
+        <div class="cert-card"><img src="https://cdn.vectorstock.com/i/500p/92/81/pirelli-tyre-logo-vector-34979281.jpg" alt="Pirelli" class="cert-logo" loading="lazy"><h4>Pirelli Tyre Campus</h4><p>Turkey</p><small>Tyre Engineering & Production</small></div>
+        <div class="cert-card"><img src="https://cdn.freebiesupply.com/logos/large/2x/bridgestone-01-logo-png-transparent.png" alt="Bridgestone" class="cert-logo" loading="lazy"><h4>Bridgestone</h4><p>South Africa</p><small>Tyre Management & CPK</small></div>
+        <div class="cert-card"><img src="https://www.freeiconspng.com/uploads/mercedes-benz-logo-png-9.png" alt="Mercedes-Benz" class="cert-logo" loading="lazy"><h4>Mercedes-Benz</h4><p>Tanzania</p><small>Truck Systems Training</small></div>
+        <div class="cert-card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkY8nGhdfG09PA_tNuJdZClV678uFMdeOhfg&s" alt="Kumho" class="cert-logo" loading="lazy"><h4>Kumho Africa</h4><p>South Africa</p><small>Technical Training</small></div>
       </div>
     </div>
   </section>
 
-  <!-- EXPANDED Case Studies -->
+  <!-- CEO Gallery with Load More (Up to 20 Images) -->
+  <section style="background: var(--gray-light);" data-aos="fade-up">
+    <div class="container">
+      <div class="section-sub" style="text-align: center;">Moments & Milestones</div>
+      <h2 class="section-title" style="text-align: center;">CEO Gallery</h2>
+      <p style="text-align: center; color: var(--slate); margin-bottom: 48px;">Capturing moments of leadership, training, and industry engagement</p>
+      
+      <!-- Gallery Grid - Shows 5 initially -->
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-item" data-index="0"><img src="IMAGE 5.jpeg" alt="Industry Conference - Fredrick Mwaluko speaking at transport summit" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item" data-index="1"><img src="IMAGE 10.jpg" alt="Fleet Inspection - Fredrick conducting on-site tyre inspection" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item" data-index="2"><img src="IMAGE 7.jpeg" alt="Training Session - Driver education workshop" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item" data-index="3"><img src="IMAGE 9.jpeg" alt="Tyre Engineering - Technical analysis session" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+        
+      </div>
+      
+      <!-- Load More Button -->
+      <div style="text-align: center; margin-top: 48px;" id="galleryLoadMoreContainer">
+        <button id="loadMoreGalleryBtn" class="btn-outline" style="padding: 12px 32px;">
+          <i class="fas fa-images"></i> Load More Images
+        </button>
+      </div>
+      
+      <!-- Hidden Gallery Items Container (Additional 15 Images - Total 20) -->
+      <div id="hiddenGalleryItems" style="display: none;">
+        <div class="gallery-item" data-index="5"><img src="IMAGE 11.jpeg" alt="Fredrick receiving certification award" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item" data-index="6"><img src="IMAGE 15.jpeg" alt="CEO speaking at industry panel" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item" data-index="7"><img src="IMAGE 3.jpeg" alt="Fleet optimization workshop" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item" data-index="8"><img src="IMAGE 4.jpeg" alt="Tyre inspection at logistics facility" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item" data-index="9"><img src="image 1.png" alt="PrimeFleet Solutions team meeting" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item" data-index="10"><img src="IMAGE 17.jpeg" alt="Fleet management consultation" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+        
+        <div class="gallery-item" data-index="11"><img src="IMAGE 18.jpeg" alt="Technical training session" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item" data-index="12"><img src="IMAGE 19.jpeg" alt="Tyre lifecycle assessment" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item" data-index="13"><img src="IMAGE 20.jpeg" alt="Logistics fleet review" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item" data-index="14"><img src="IMAGE 21.jpeg" alt="Driver training program" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item" data-index="15"><img src="IMAGE 23.jpeg" alt="Fleet performance analysis" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item" data-index="16"><img src="IMAGE 24.jpeg" alt="International certification event" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item" data-index="17"><img src="IMAGE 25.jpeg" alt="Industry networking event" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item" data-index="18"><img src="IMAGE 29.jpeg" alt="Tyre engineering workshop" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+        <div class="gallery-item" data-index="19"><img src="IMAGE 26.jpeg" alt="PrimeFleet corporate event" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Section -->
   <section id="case-studies" data-aos="fade-up">
     <div class="container">
       <div class="section-sub" style="text-align: center;">Proven Impact</div>
       <h2 class="section-title" style="text-align: center;">Case Studies</h2>
       <div class="case-grid">
-        <div class="case-card"><div class="case-icon"><i class="fas fa-chart-line"></i></div><h3>Fleet Cost Optimization – Logistics Sector</h3><p><strong>Challenge:</strong> A major logistics operator faced 22% above-budget tyre spend, chronic sidewall failures, and 14% monthly fleet downtime due to poor alignment and inconsistent inflation practices.</p><p><strong>Solution:</strong> Executed deep-dive axle alignment audits, launched a digital CPK tracking dashboard, initiated a retread pilot program for 200 casings, and delivered driver workshops on inflation discipline.</p><div class="case-stats"><span class="case-stat">31% Cost Reduction</span><span class="case-stat">18% Availability Increase</span></div><div class="result-badge">✓ ROI achieved in 8 months</div></div>
-        <div class="case-card"><div class="case-icon"><i class="fas fa-shield-alt"></i></div><h3>Safety Improvement Initiative</h3><p><strong>Challenge:</strong> Cross-border transport fleet experienced high blowout incidents with 35% year-over-year increase in safety-related events, impacting insurance premiums and driver confidence.</p><p><strong>Solution:</strong> Comprehensive failure forensics analysis, implementation of pressure monitoring protocols across all depots, and preventive maintenance scheduling integrated with telematics data.</p><div class="case-stats"><span class="case-stat">76% Fewer Incidents</span><span class="case-stat">12% Fuel Savings</span></div><div class="result-badge">✓ Safety rating improved</div></div>
-        <div class="case-card"><div class="case-icon"><i class="fas fa-sync-alt"></i></div><h3>Lifecycle Extension – Heavy Duty</h3><p><strong>Challenge:</strong> Industrial mining fleet suffered severe casing damage from harsh terrain conditions, with 28% of tyre budget lost to premature scrapping and frequent replacement cycles.</p><p><strong>Solution:</strong> Deployed tyre lifecycle management system, integrated Vipal retread processes, conducted monthly engineering audits, and optimized tyre application for terrain conditions.</p><div class="case-stats"><span class="case-stat">22% Longer Lifespan</span><span class="case-stat">28% Fewer Delays</span></div><div class="result-badge">✓ $500K+ annual savings</div></div>
+        <div class="case-card"><div class="case-icon"><i class="fas fa-chart-line"></i></div><h3>Fleet Cost Optimization – Logistics Sector</h3><p><strong>Challenge:</strong> A major logistics operator faced 22% above-budget tyre spend, chronic sidewall failures, and 14% monthly fleet downtime.</p><p><strong>Solution:</strong> Executed deep-dive axle alignment audits, launched a digital CPK tracking dashboard, initiated a retread pilot program.</p><div class="case-stats"><span class="case-stat">31% Cost Reduction</span><span class="case-stat">18% Availability Increase</span></div><div class="result-badge">✓ ROI achieved in 8 months</div></div>
+        <div class="case-card"><div class="case-icon"><i class="fas fa-shield-alt"></i></div><h3>Safety Improvement Initiative</h3><p><strong>Challenge:</strong> Cross-border transport fleet experienced high blowout incidents with 35% year-over-year increase in safety-related events.</p><p><strong>Solution:</strong> Comprehensive failure forensics analysis, implementation of pressure monitoring protocols.</p><div class="case-stats"><span class="case-stat">76% Fewer Incidents</span><span class="case-stat">12% Fuel Savings</span></div><div class="result-badge">✓ Safety rating improved</div></div>
+        <div class="case-card"><div class="case-icon"><i class="fas fa-sync-alt"></i></div><h3>Lifecycle Extension – Heavy Duty</h3><p><strong>Challenge:</strong> Industrial mining fleet suffered severe casing damage from harsh terrain conditions, with 28% of tyre budget lost to premature scrapping.</p><p><strong>Solution:</strong> Deployed tyre lifecycle management system, integrated Vipal retread processes.</p><div class="case-stats"><span class="case-stat">22% Longer Lifespan</span><span class="case-stat">$500K+ Annual Savings</span></div><div class="result-badge">✓ 28% fewer delays</div></div>
       </div>
     </div>
   </section>
@@ -427,7 +542,7 @@
   <footer>
     <div class="container">
       <div class="footer-content">
-        <div><img src="image 1.png" alt="Logo" style="height: 40px;"><p style="margin-top: 16px;">Engineering-driven fleet performance across Africa.</p></div>
+        <div><img src="IMAGE 1.jpeg" alt="Logo" style="height: 40px;"><p style="margin-top: 16px;">Engineering-driven fleet performance across Africa.</p></div>
         <div><h4>Contact</h4><p><i class="fas fa-envelope"></i> mumobrian1542@gmail.com</p><p><i class="fas fa-phone"></i> <a href="tel:+254715598399" style="color: #cbdde9;">+254 715 598 399</a></p><p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p></div>
         <div><h4>Connect</h4><p><a href="https://www.linkedin.com/in/fredrick-mwaluko-97ba1170/" target="_blank" style="color: #cbdde9;"><i class="fab fa-linkedin"></i> LinkedIn</a></p><p><a href="index.html" style="color: #cbdde9;">Back to Home</a></p></div>
       </div>
@@ -443,12 +558,177 @@
   <script>
     AOS.init({ once: true, offset: 30, duration: 700 });
     
+    // Gallery Load More and Lightbox Functionality
+    (function() {
+      const galleryGrid = document.getElementById('galleryGrid');
+      const hiddenContainer = document.getElementById('hiddenGalleryItems');
+      const loadMoreBtn = document.getElementById('loadMoreGalleryBtn');
+      let allGalleryItems = [];
+      let currentLightboxIndex = 0;
+      
+      // Collect all gallery items
+      function collectAllItems() {
+        const initialItems = Array.from(galleryGrid.querySelectorAll('.gallery-item:not(.cloned)'));
+        const hiddenItems = hiddenContainer ? Array.from(hiddenContainer.querySelectorAll('.gallery-item')) : [];
+        allGalleryItems = [...initialItems, ...hiddenItems];
+      }
+      
+      // Load more items (loads 5 at a time)
+      let loadedCount = 5;
+      const loadStep = 5;
+      
+      function loadMoreImages() {
+        const hiddenItems = Array.from(hiddenContainer.querySelectorAll('.gallery-item'));
+        const nextItems = hiddenItems.slice(0, loadStep);
+        
+        nextItems.forEach(item => {
+          const clonedItem = item.cloneNode(true);
+          clonedItem.classList.add('cloned');
+          galleryGrid.appendChild(clonedItem);
+        });
+        
+        // Remove loaded items from hidden container
+        nextItems.forEach(item => item.remove());
+        
+        loadedCount += nextItems.length;
+        
+        // If no more items, hide load more button
+        if (hiddenContainer.querySelectorAll('.gallery-item').length === 0) {
+          if (loadMoreBtn) loadMoreBtn.style.display = 'none';
+        }
+        
+        // Re-attach lightbox events to new items
+        attachLightboxEvents();
+        collectAllItems();
+      }
+      
+      // Lightbox functionality
+      function openLightbox(index) {
+        currentLightboxIndex = index;
+        updateLightboxImage();
+        
+        const modal = document.createElement('div');
+        modal.className = 'lightbox-modal';
+        modal.innerHTML = `
+          <span class="lightbox-close">&times;</span>
+          <span class="lightbox-prev">&lsaquo;</span>
+          <img class="lightbox-image" src="${allGalleryItems[currentLightboxIndex].querySelector('img').src}" alt="${allGalleryItems[currentLightboxIndex].querySelector('img').alt}">
+          <span class="lightbox-next">&rsaquo;</span>
+          <div class="lightbox-counter">${currentLightboxIndex + 1} of ${allGalleryItems.length}</div>
+        `;
+        document.body.appendChild(modal);
+        document.body.style.overflow = 'hidden';
+        
+        // Close modal
+        modal.querySelector('.lightbox-close').addEventListener('click', () => closeLightbox(modal));
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeLightbox(modal);
+        });
+        
+        // Next/Prev navigation
+        modal.querySelector('.lightbox-prev').addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (currentLightboxIndex > 0) {
+            currentLightboxIndex--;
+            const img = modal.querySelector('.lightbox-image');
+            const counter = modal.querySelector('.lightbox-counter');
+            img.src = allGalleryItems[currentLightboxIndex].querySelector('img').src;
+            img.alt = allGalleryItems[currentLightboxIndex].querySelector('img').alt;
+            counter.textContent = `${currentLightboxIndex + 1} of ${allGalleryItems.length}`;
+          }
+        });
+        
+        modal.querySelector('.lightbox-next').addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (currentLightboxIndex < allGalleryItems.length - 1) {
+            currentLightboxIndex++;
+            const img = modal.querySelector('.lightbox-image');
+            const counter = modal.querySelector('.lightbox-counter');
+            img.src = allGalleryItems[currentLightboxIndex].querySelector('img').src;
+            img.alt = allGalleryItems[currentLightboxIndex].querySelector('img').alt;
+            counter.textContent = `${currentLightboxIndex + 1} of ${allGalleryItems.length}`;
+          }
+        });
+        
+        // Keyboard navigation
+        function handleKeydown(e) {
+          if (e.key === 'ArrowLeft') {
+            if (currentLightboxIndex > 0) {
+              currentLightboxIndex--;
+              const img = modal.querySelector('.lightbox-image');
+              const counter = modal.querySelector('.lightbox-counter');
+              img.src = allGalleryItems[currentLightboxIndex].querySelector('img').src;
+              img.alt = allGalleryItems[currentLightboxIndex].querySelector('img').alt;
+              counter.textContent = `${currentLightboxIndex + 1} of ${allGalleryItems.length}`;
+            }
+          } else if (e.key === 'ArrowRight') {
+            if (currentLightboxIndex < allGalleryItems.length - 1) {
+              currentLightboxIndex++;
+              const img = modal.querySelector('.lightbox-image');
+              const counter = modal.querySelector('.lightbox-counter');
+              img.src = allGalleryItems[currentLightboxIndex].querySelector('img').src;
+              img.alt = allGalleryItems[currentLightboxIndex].querySelector('img').alt;
+              counter.textContent = `${currentLightboxIndex + 1} of ${allGalleryItems.length}`;
+            }
+          } else if (e.key === 'Escape') {
+            closeLightbox(modal);
+          }
+        }
+        document.addEventListener('keydown', handleKeydown);
+        modal._handleKeydown = handleKeydown;
+      }
+      
+      function updateLightboxImage() {
+        // Handled in openLightbox
+      }
+      
+      function closeLightbox(modal) {
+        if (modal._handleKeydown) {
+          document.removeEventListener('keydown', modal._handleKeydown);
+        }
+        modal.remove();
+        document.body.style.overflow = '';
+      }
+      
+      function attachLightboxEvents() {
+        const items = document.querySelectorAll('#galleryGrid .gallery-item');
+        items.forEach((item, idx) => {
+          // Remove existing listeners by cloning
+          const newItem = item.cloneNode(true);
+          item.parentNode.replaceChild(newItem, item);
+          
+          newItem.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const imgSrc = newItem.querySelector('img').src;
+            const index = allGalleryItems.findIndex(i => i.querySelector('img')?.src === imgSrc);
+            if (index !== -1) {
+              openLightbox(index);
+            } else {
+              // Fallback: find by matching image src in current gallery
+              const currentItems = Array.from(document.querySelectorAll('#galleryGrid .gallery-item img'));
+              const imgIndex = currentItems.findIndex(img => img.src === imgSrc);
+              if (imgIndex !== -1) openLightbox(imgIndex);
+            }
+          });
+        });
+        
+        collectAllItems();
+      }
+      
+      // Initialize
+      collectAllItems();
+      attachLightboxEvents();
+      
+      // Load more button click
+      if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', loadMoreImages);
+      }
+    })();
+    
     // Alpine.js Data
     document.addEventListener('alpine:init', () => {
       Alpine.data('ceoData', () => ({
-        // Dark Mode
         isDarkMode: localStorage.getItem('ceoDarkMode') === 'true',
-        // Form
         formName: '',
         formEmail: '',
         formCompany: '',
@@ -501,18 +781,6 @@
           }
         }
       }));
-    });
-    
-    // Lightbox Gallery
-    document.querySelectorAll('.gallery-item').forEach(item => {
-      item.addEventListener('click', () => {
-        const imgSrc = item.querySelector('img').src;
-        const lightbox = document.createElement('div');
-        lightbox.className = 'lightbox';
-        lightbox.innerHTML = `<img src="${imgSrc}" alt="Gallery"><span style="position:absolute; top:20px; right:30px; color:white; font-size:2rem; cursor:pointer;">&times;</span>`;
-        document.body.appendChild(lightbox);
-        lightbox.addEventListener('click', () => lightbox.remove());
-      });
     });
   </script>
 </body>
