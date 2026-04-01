@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>CEO Professional Gallery | Fredrick Mwaluko | PrimeFleet Solutions</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #ffffff;
+      color: #1A2C3E;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Typography */
+    h1, h2, h3, .logo-text, .nav-links a, .btn {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    :root {
+      --deep-blue: #0A2540;
+      --deep-blue-dark: #051e30;
+      --orange: #E85D04;
+      --orange-hover: #d35400;
+      --gray-light: #F7F9FC;
+      --gray-border: #E9EDF2;
+      --slate: #4A5B6E;
+      --shadow-sm: 0 10px 30px rgba(0,0,0,0.05);
+      --shadow-md: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.03);
+      z-index: 1000;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--deep-blue);
+    }
+
+    .logo-text span {
+      color: var(--orange);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--deep-blue);
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--orange);
+    }
+
+    .btn-primary-sm {
+      background: var(--orange);
+      color: white;
+      border: none;
+      padding: 8px 24px;
+      border-radius: 40px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: inline-block;
+    }
+
+    .btn-primary-sm:hover {
+      background: var(--orange-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .gallery-hero {
+      background: linear-gradient(135deg, #0A2540 0%, #0F2E4A 100%);
+      color: white;
+      padding: 80px 0 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-hero::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 60%;
+      height: 120%;
+      background: radial-gradient(circle, rgba(232,93,4,0.15), transparent);
+      pointer-events: none;
+    }
+
+    .gallery-hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .gallery-hero .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.15);
+      padding: 10px 24px;
+      border-radius: 40px;
+      color: white;
+      text-decoration: none;
+      margin-top: 32px;
+      transition: background 0.2s;
+      font-weight: 600;
+    }
+
+    .back-link:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    /* Gallery Grid */
+    .gallery-section {
+      padding: 80px 0;
+      background: #ffffff;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
+
+    /* Gallery Item */
+    .gallery-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      background: var(--gray-light);
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      aspect-ratio: 4 / 3;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(10,37,64,0.85), transparent);
+      padding: 20px 16px 12px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+      pointer-events: none;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+
+    .gallery-caption {
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .gallery-caption i {
+      font-size: 0.75rem;
+      color: var(--orange);
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.94);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      animation: fadeIn 0.25s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
+      z-index: 10001;
+      transition: transform 0.2s, opacity 0.2s;
+      opacity: 0.8;
+    }
+
+    .lightbox-close:hover {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+
+    .lightbox-image-container {
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      object-fit: contain;
+    }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 25px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: rgba(255,255,255,0.9);
+      font-size: 0.9rem;
+      background: rgba(0,0,0,0.6);
+      padding: 8px 20px;
+      width: fit-content;
+      margin: 0 auto;
+      border-radius: 40px;
+      font-weight: 500;
+      backdrop-filter: blur(5px);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Footer */
+    footer {
+      background: var(--deep-blue-dark);
+      color: #cbdde9;
+      padding: 48px 0 24px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 40px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        padding: 0 24px;
+      }
+      .gallery-hero h1 {
+        font-size: 2.2rem;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .nav-links {
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .nav-links a {
+        font-size: 0.85rem;
+      }
+      .logo-text {
+        font-size: 1.2rem;
+      }
+    }
+
+    .btn-back-bottom {
+      text-align: center;
+      margin-top: 48px;
+    }
+
+    .btn-outline-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      border: 2px solid var(--orange);
+      color: var(--orange);
+      padding: 12px 32px;
+      border-radius: 40px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-outline-back:hover {
+      background: var(--orange);
+      color: white;
+    }
+
+    .section-badge {
+      display: inline-block;
+      background: var(--gray-light);
+      border-radius: 40px;
+      padding: 4px 16px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--orange);
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .stat-note {
+      text-align: center;
+      margin-top: 40px;
+      color: var(--slate);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation with links to all pages -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="image 1.png" alt="PrimeFleet Logo" onerror="this.style.display='none'">
+        <div class="logo-text">PrimeFleet<span>Solutions</span></div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="ceos-profile.html">CEO Profile</a>
+        <a href="ceos-profile.html#contact" class="btn-primary-sm">Get Consultation</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <div class="gallery-hero">
+    <div class="container">
+      <div class="section-badge" style="background: rgba(255,255,255,0.2); color: white;">Visual Archive</div>
+      <h1>CEO Professional Gallery</h1>
+      <p class="subtitle">A visual journey of engineering excellence and global experience</p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="ceo-profile.html" class="back-link"><i class="fas fa-user"></i> View Full Profile</a>
+        <a href="index.html" class="back-link"><i class="fas fa-home"></i> Back to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gallery Section -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- 30 professional images with captions -->
+        <div class="gallery-item" data-caption="Fleet Inspection – Kenya">
+          <img src="image 36.jpeg" alt="Fredrick Mwaluko conducting fleet inspection in Kenya" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Fleet+Inspection'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-hard-hat"></i></div></div>
+        </div>
+        <div class="gallery-item" data-caption="International Certification – ENOC Dubai">
+          <img src="image 37.jpeg" alt="Fredrick receiving ENOC certification in Dubai" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=ENOC+Certification'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-award"></i></div></div>
+        </div>
+        <div class="gallery-item" data-caption="Tyre Engineering Workshop – South Africa">
+          <img src="image 38.jpeg" alt="Bridgestone tyre management training South Africa" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Bridgestone+Training'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-chalkboard-user"></i></div></div>
+        </div>
+        <div class="gallery-item" data-caption="Keynote Speech – Transport Summit">
+          <img src="IMAGE 19.jpeg" alt="Fredrick Mwaluko speaking at African transport summit" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Leadership+Summit'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-microphone-alt"></i></div></div>
+        </div>
+        <div class="gallery-item" data-caption="Vipal Retreading Training – Brazil">
+          <img src="IMAGE 7.jpeg" alt="Vipal Borrachas retreading course Brazil" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Vipal+Brazil'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-sync-alt"></i> </div></div>
+        </div>
+        <div class="gallery-item" data-caption="On-Site Tyre Diagnostics">
+          <img src="IMAGE 34.jpeg" alt="Tyre failure analysis at logistics depot" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Tyre+Forensics'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-search"></i></div></div>
+        </div>
+        <div class="gallery-item" data-caption="Mandela Group Technical Review">
+          <img src="image 39.jpeg" alt="Technical meeting at Mandela Group headquarters" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Mandela+Group'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-chart-line"></i> Performance Review</div></div>
+        </div>
+        <div class="gallery-item" data-caption="Pirelli Tyre Campus – Turkey">
+          <img src="IMAGE 30.jpeg" alt="Pirelli tyre engineering training Turkey" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Pirelli+Campus'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-industry"></i> Pirelli Campus – Turkey</div></div>
+        </div>
+        <div class="gallery-item" data-caption="Driver Safety Workshop">
+          <img src="IMAGE 24.jpeg" alt="Fredrick leading driver safety training session" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Driver+Safety'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-shield-alt"></i> Safety Workshop</div></div>
+        </div>
+        <div class="gallery-item" data-caption="PrimeFleet Consulting Session">
+          <img src="image 40.jpeg" alt="CEO consulting for logistics optimization" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Fleet+Consulting'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-handshake"></i> Strategic Consulting</div></div>
+        </div>
+        <div class="gallery-item" data-caption="">
+          <img src="image 6.jpeg" alt="Kumho tyre technical training South Africa" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Kumho+Africa'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-certificate"></i> </div></div>
+        </div>
+        <div class="gallery-item" data-caption="Mercedes-Benz Truck Systems">
+          <img src="image 42.jpeg" alt="Mercedes-Benz truck systems training Tanzania" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Mercedes+Truck'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-truck"></i> MB Truck Systems</div></div>
+        </div>
+        <div class="gallery-item" data-caption="CPK Analysis Presentation">
+          <img src="IMAGE 21.jpeg" alt="Cost per kilometer strategy presentation" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=CPK+Strategy'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-chart-simple"></i> CPK Optimization</div></div>
+        </div>
+        <div class="gallery-item" data-caption="Field Work – East Africa">
+          <img src="image 43.jpeg" alt="Fredrick inspecting fleet in East Africa field operation" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Field+Work'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-map-marker-alt"></i> Field Ops – Tanzania</div></div>
+        </div>
+        <div class="gallery-item" data-caption="Retreading Plant Tour">
+          <img src="image 44.jpeg" alt="Vipal retreading facility tour" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Retreading+Plant'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-factory"></i> Retread Facility</div></div>
+        </div>
+        <div class="gallery-item" data-caption="International Fleet Conference">
+          <img src="image 45.jpeg" alt="CEO panel discussion at global fleet conference" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Fleet+Conference'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-globe"></i> Global Fleet Forum</div></div>
+        </div>
+        <div class="gallery-item" data-caption="">
+          <img src="image 46.jpeg" alt="Tyre lifecycle assessment workshop" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Tyre+Lifecycle'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-chart-gantt"></i> </div></div>
+        </div>
+        <div class="gallery-item" data-caption="">
+          <img src="IMAGE 28.jpeg" alt="Fredrick receiving industry excellence award" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Industry+Award'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-trophy"></i></div></div>
+        </div>
+        <div class="gallery-item" data-caption="Fleet  Review">
+          <img src="image 47.jpeg" alt="Fleet telematics data analysis" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Telematics'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-microchip"></i></div></div>
+        </div>
+        <div class="gallery-item" data-caption="PrimeFleet Team Leadership">
+          <img src="IMAGE 2.jpeg" alt="CEO leading PrimeFleet team meeting" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Team+Leadership'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-users"></i> Leadership Moment</div></div>
+        </div>
+        <div class="gallery-item" data-caption="Mining Fleet Optimization">
+          <img src="image 48.jpeg" alt="Heavy duty mining fleet assessment" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Mining+Fleet'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-hard-hat"></i></div></div>
+        </div>
+        <div class="gallery-item" data-caption="ENOC ">
+          <img src="image 49.jpeg" alt="ENOC lubrication technical session Dubai" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=ENOC+Lubrication'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-oil-can"></i></div></div>
+        </div>
+        <div class="gallery-item" data-caption="Cross-Border Transport Forum">
+          <img src="IMAGE 15.jpeg" alt="East African cross-border logistics forum" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Transport+Forum'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-border-all"></i> Cross-Border Ops</div></div>
+        </div>
+        <div class="gallery-item" data-caption="Technical Workshop – Safety Systems">
+          <img src="image 41.jpeg" alt="Fleet safety systems installation training" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Safety+Systems'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-car-crash"></i> Safety Protocols</div></div>
+        </div>
+        <div class="gallery-item" data-caption="Global Certification Achievement">
+          <img src="image 50.jpeg" alt="Fredrick with international certification cohort" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Global+Cert'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-graduation-cap"></i> Certifications</div></div>
+        </div>
+        <div class="gallery-item" data-caption="Fleet Maintenance Audit">
+          <img src="image 51.jpeg" alt="Comprehensive fleet maintenance audit" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Maintenance+Audit'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-clipboard-list"></i> Audit Excellence</div></div>
+        </div>
+        <div class="gallery-item" data-caption="PrimeFleet Solutions Launch">
+          <img src="image 39.jpeg" alt="PrimeFleet Solutions corporate launch event" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Company+Launch'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-rocket"></i> PrimeFleet Launch</div></div>
+        </div>
+        <div class="gallery-item" data-caption="Fleet Cost Efficiency Summit">
+          <img src="IMAGE 17.jpeg" alt="Speaking at fleet cost efficiency summit" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Cost+Summit'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-chart-pie"></i> Cost Efficiency</div></div>
+        </div>
+        <div class="gallery-item" data-caption="Mentorship Session – Young Engineers">
+          <img src="IMAGE 10.jpg" alt="Fredrick mentoring young fleet engineers" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Mentorship'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-chalkboard"></i> Engineering Mentorship</div></div>
+        </div>
+        <div class="gallery-item" data-caption="Strategic Partner Meeting">
+          <img src="image 52.jpeg" alt="Meeting with international partners" loading="lazy" onerror="this.src='https://placehold.co/600x450/0A2540/FFFFFF?text=Global+Partners'">
+          <div class="gallery-overlay"><div class="gallery-caption"><i class="fas fa-handshake"></i> Industry Partnership</div></div>
+        </div>
+      </div>
+
+      <div class="stat-note">
+        <i class="fas fa-camera-retro"></i> 30+ moments of engineering leadership, global certifications, and operational excellence
+      </div>
+
+      <div class="btn-back-bottom">
+        <a href="ceo-profile.html" class="btn-outline-back"><i class="fas fa-user-tie"></i> View CEO Profile</a>
+        <a href="index.html" class="btn-outline-back" style="margin-left: 16px;"><i class="fas fa-home"></i> Back to Home</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <img src="image 1.png" alt="PrimeFleet Logo" style="height: 40px;" onerror="this.style.display='none'">
+          <p style="margin-top: 16px;">Engineering-driven fleet performance across Africa.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <p><a href="index.html" style="color: #cbdde9; text-decoration: none;">Home</a></p>
+          <p><a href="ceos-profile.html" style="color: #cbdde9; text-decoration: none;">CEO Profile</a></p>
+          <p><a href="ceo-gallery.html" style="color: #cbdde9; text-decoration: none;">Full Gallery</a></p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p><i class="fas fa-envelope"></i> mumobrian1542@gmail.com</p>
+          <p><i class="fas fa-phone"></i> <a href="tel:+254715598399" style="color: #cbdde9;">+254 715 598 399</a></p>
+          <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <p><a href="https://www.linkedin.com/in/fredrick-mwaluko-97ba1170/" target="_blank" style="color: #cbdde9;"><i class="fab fa-linkedin"></i> LinkedIn</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Fredrick Mwaluko | PrimeFleet Solutions — International Standards, Engineering Excellence
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox JavaScript -->
+  <script>
+    (function() {
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      let currentIndex = 0;
+      let lightboxActive = false;
+
+      function openLightbox(index) {
+        if (!galleryItems.length) return;
+        currentIndex = Math.min(Math.max(0, index), galleryItems.length - 1);
+        const targetItem = galleryItems[currentIndex];
+        const imgSrc = targetItem.querySelector('img')?.src || '';
+        const captionText = targetItem.getAttribute('data-caption') || 
+                            targetItem.querySelector('.gallery-caption')?.innerText?.replace(/[^\w\s]/g, '') || 
+                            'Professional Moment';
+
+        const modal = document.createElement('div');
+        modal.className = 'lightbox-modal';
+        modal.innerHTML = `
+          <span class="lightbox-close">&times;</span>
+          <div class="lightbox-image-container">
+            <img class="lightbox-image" src="${imgSrc}" alt="CEO Gallery Image">
+          </div>
+          <div class="lightbox-caption">${captionText}</div>
+        `;
+        document.body.appendChild(modal);
+        document.body.style.overflow = 'hidden';
+        lightboxActive = true;
+
+        const closeLightbox = () => {
+          if (modal) modal.remove();
+          document.body.style.overflow = '';
+          lightboxActive = false;
+          document.removeEventListener('keydown', keyHandler);
+        };
+
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeLightbox();
+        });
+        modal.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+
+        const keyHandler = (e) => {
+          if (!lightboxActive) return;
+          if (e.key === 'Escape') {
+            closeLightbox();
+          } else if (e.key === 'ArrowLeft') {
+            navigateGallery(-1, modal);
+          } else if (e.key === 'ArrowRight') {
+            navigateGallery(1, modal);
+          }
+        };
+        document.addEventListener('keydown', keyHandler);
+
+        function navigateGallery(delta, currentModal) {
+          let newIndex = currentIndex + delta;
+          if (newIndex < 0) newIndex = galleryItems.length - 1;
+          if (newIndex >= galleryItems.length) newIndex = 0;
+          currentIndex = newIndex;
+          const newItem = galleryItems[currentIndex];
+          const newImgSrc = newItem.querySelector('img')?.src || '';
+          const newCaption = newItem.getAttribute('data-caption') || 
+                              newItem.querySelector('.gallery-caption')?.innerText?.replace(/[^\w\s]/g, '') || 
+                              'Gallery Image';
+          
+          const imgElement = currentModal.querySelector('.lightbox-image');
+          const captionDiv = currentModal.querySelector('.lightbox-caption');
+          if (imgElement) {
+            imgElement.src = newImgSrc;
+            imgElement.alt = newCaption;
+          }
+          if (captionDiv) captionDiv.innerText = newCaption;
+        }
+
+        const lightboxImg = modal.querySelector('.lightbox-image');
+        if (lightboxImg) {
+          lightboxImg.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navigateGallery(1, modal);
+          });
+        }
+      }
+
+      galleryItems.forEach((item, idx) => {
+        item.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openLightbox(idx);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
